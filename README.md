@@ -24,7 +24,7 @@ yarn or npm install
 Run ```yarn start``` outside of the app
 
 ```
-cd weightlifting-app
+cd client
 ```
 
 Install all dependencies inside of the React app
