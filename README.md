@@ -62,6 +62,7 @@ It's hard to keep track of how many reps you can do for time, or how much you us
 - [ ] instance of axios with an authentification header
 
 #### ```PrivateRoute.js```
+- [ ] Setting up protected route for "/dashboard"--after logging in
 
 #### ```Login.js```
 - [ ] Login form
