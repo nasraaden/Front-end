@@ -8,7 +8,7 @@ This app keep it all organized and tracked for you.
 Clone repo into your terminal and create your own branch -- MAKE SURE YOU DON'T FORK REPO BECAUSE WE ARE ALL EDITING OFF THE SAME REPO AND PUSHING TO MASTER
 
 ```
-create-react-app weightlifting-app
+create-react-app client
 ```
 
 I am setting up the components and creating a new react app so you will need to just cd into it
