@@ -95,7 +95,6 @@ This is plan is not set in stone. I just wanted to map something out to get some
 
 ### State Management
 ### Redux
-I will most likely use redux because I don't even remember Context API 
 
 #### Actions
 ##### Add (POST) User/Workout
@@ -123,6 +122,9 @@ I will most likely use redux because I don't even remember Context API
 - [ ] Login/Signup Reducer
 - [ ] User Reducer
 - [ ] Workout Reducer
+
+We could aslo use **Context API**
+
 
 ### REACT 1 TODO
 Will fill this in once we meet
