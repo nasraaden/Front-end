@@ -38,10 +38,10 @@ const Login = () => {
     return(
         <div>
             <form className={classes.container}>
-                <h2>Welcome Back!</h2>
+                <h2>LOGIN</h2>
                 <div>
                     <TextField
-                        id="name"
+                        id="username"
                         className={classes.textField}
                         label="Username"
                         margin="normal"
@@ -50,7 +50,7 @@ const Login = () => {
                 </div>
                 <div>
                     <TextField
-                        id="name"
+                        id="password"
                         className={classes.textField}
                         label="Password"
                         type="password"
@@ -62,8 +62,7 @@ const Login = () => {
                 <p>Don't have an account? <Link to="/signup"><Button variant="contained">Signup</Button></Link></p>
             </form>
         </div>
-    )
-    
+    )   
 }
 
 export default Login;
