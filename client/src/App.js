@@ -27,6 +27,7 @@ function App() {
       <Route path="/signup" component={Signup}/>
 
    
+      <Route path="/AddWorkout" component={UpdateWorkout}/>
     </div>
   );
 }
