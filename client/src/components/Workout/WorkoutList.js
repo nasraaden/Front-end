@@ -29,19 +29,39 @@ const workouts = [
 ]
 
 
-
 const WorkoutList = () => {
-    return (
-        <div>
+    const [workout, setWorkout] = useState([])
+    useEffect(() => {
+        const getWorkouts = () => {
+            // axios
+            //     .get('')
+            //     .then( res => {
+            //         setWorkout(res.)
+            //     })
+            //     .catch( err => {
+            //         console.log("unable to grab workouts", err)
+            //     })
+            setWorkout(workouts);
+        }
+        getWorkouts();
+    }, []);
+    console.log(workout);
 
-        </div>
-    )
+return (
+    <div>
+
+        {workout.map(workOut => {
+            return(
+                <WorkoutCard key={workOut.id} workout={workOut} />
+            )}
+        )}
+    </div>
+)
 }
 
 export default WorkoutList;
 
-<<<<<<< HEAD
+export {workouts};
+
+
 // This is where you map over WorkoutCard to display the data that is being shown. 
-=======
-// This is where you map over WorkoutCard to display the data that is being shown. 
->>>>>>> parent of 32442aa... workout card in progress
