@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -22,12 +22,12 @@ export const getLoggedIn = creds => dispatch => {
 };
 
 export const getSignedUp = user => dispatch => {
-  dispatch({ type: SIGNUP_Start });
+  dispatch({ type: SIGNUP_START });
   return axios
     .post("/signup", user)
     .then(response => {
       localStorage.setItem("token", response.data.token);
-      dispatch({ type: SIGNUP_SUCCESS, payload: res.data.payload });
+      dispatch({ type: SIGNUP_SUCCESS, payload: response.data.payload });
     })
     .catch(err => dispatch({ type: SIGNUP_FAIL, payload: err }));
 };
