@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
+
+import WorkoutCard from "./WorkoutCard";
+
 const workouts = [
     {
         id: 1,
@@ -52,11 +55,17 @@ const WorkoutList = () => {
 
     return (
         <div>
-
+            {workout.map(workOut => {
+                return(
+                    <WorkoutCard key={workOut.id} workout={workOut} />
+                )}
+            )}
         </div>
     )
 }
 
 export default WorkoutList;
+
+export {workouts};
 
 // This is where you map over WorkoutCard to display the data that is being shown. 
