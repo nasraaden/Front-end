@@ -23,15 +23,9 @@ const Signup = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (user.password === user.checkPassword) {
-      axios
-        .post("/signup", user)
-        .then(response => {
-          localStorage.setItem("token", response.data.token);
-        })
-        .catch(err => console.log(err.response));
       setUser({
         ...user,
-        usernmae: "",
+        username: "",
         email: "",
         password: "",
         checkPassword: ""
