@@ -49,7 +49,7 @@ const Signup = () => {
                 <div>
                     <TextField
                         id="email"
-                        type="email"
+                        type="Email"
                         className={classes.textField}
                         label="Email"
                         margin="normal"
@@ -76,7 +76,7 @@ const Signup = () => {
                     />
                 </div>
                 <Button variant="contained" className={classes.button}>Signup</Button>
-                <p>Already have an account? <Link to="/login"><Button variant="contained">Login</Button></Link></p>
+                <p>Already have an account? <Link to="/login">Login here!</Link></p>
             </form>
         </div>
     )

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../actions/authActions"
 
 const Login = () => {
 
@@ -14,8 +16,8 @@ const Login = () => {
             justifyContent: 'center',
             alignItems: 'center',
             background: '#FAFAFA',
-            width: 350,
-            height: 350,
+            width: 380,
+            height: 380,
             margin: '50px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
         },
@@ -35,6 +37,12 @@ const Login = () => {
     }));
     const classes = useStyles(1);
 
+    const [credentials, setCredentials] = useState({username: "", password: ""})
+
+    const handleChanges = e => {
+        setCredentials({...credentials, [e.target.name]: e.target.value})
+    }
+
     return(
         <div>
             <form className={classes.container}>
@@ -46,6 +54,7 @@ const Login = () => {
                         label="Username"
                         margin="normal"
                         variant="outlined"
+                        onChange={handleChanges}
                     />
                 </div>
                 <div>
@@ -56,13 +65,14 @@ const Login = () => {
                         type="password"
                         margin="normal"
                         variant="outlined"
+                        onChange={handleChanges}
                     />
                 </div>
                 <Button variant="contained" className={classes.button}>Login</Button>
-                <p>Don't have an account? <Link to="/signup"><Button variant="contained">Signup</Button></Link></p>
+                <p>Don't have an account? <Link to="/signup">Signup here!</Link></p>
             </form>
         </div>
     )   
 }
 
-export default Login;
+export default connect()(Login);
