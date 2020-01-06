@@ -10,21 +10,12 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import { authReducer } from "./reducers/authReducer";
-<<<<<<< HEAD
-import { workoutReducer } from "./reducers/workoutReducer"
-
-const rootReducer = combineReducers({
-    authReducer,
-    workoutReducer
-})
-=======
 import { workoutReducer } from "./reducers/workoutReducer";
 
 const rootReducer = combineReducers({
   authReducer,
   workoutReducer
 });
->>>>>>> ebe45bc335cb99b37a4a3d7f2be904bd74386c7b
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
