@@ -10,12 +10,10 @@ import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 
 import { authReducer } from "./reducers/authReducer";
-import { userReducer } from "./reducers/userReducer";
 import { workoutReducer } from "./reducers/workoutReducer"
 
 const rootReducer = combineReducers({
     authReducer,
-    userReducer,
     workoutReducer
 })
 
