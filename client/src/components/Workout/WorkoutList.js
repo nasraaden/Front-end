@@ -40,4 +40,8 @@ const WorkoutList = () => {
 
 export default WorkoutList;
 
+<<<<<<< HEAD
 // This is where you map over WorkoutCard to display the data that is being shown. 
+=======
+// This is where you map over WorkoutCard to display the data that is being shown. 
+>>>>>>> parent of 32442aa... workout card in progress
