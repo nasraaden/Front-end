@@ -5,9 +5,9 @@ import Button from '@material-ui/core/Button';
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../actions/authActions"
+import { getLoggedIn } from "../actions/authActions"
 
-const Login = () => {
+const Login = props => {
 
     const useStyles = makeStyles(theme => ({
         container: {
@@ -43,6 +43,11 @@ const Login = () => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
 
+    const login = e => {
+        e.preventDefault();
+        props.getLoggedIn(credentials)
+    }
+
     return(
         <div>
             <form className={classes.container}>
@@ -68,11 +73,15 @@ const Login = () => {
                         onChange={handleChanges}
                     />
                 </div>
-                <Button variant="contained" className={classes.button}>Login</Button>
+                <Button variant="contained" className={classes.button} onClick={login}>Login</Button>
                 <p>Don't have an account? <Link to="/signup">Signup here!</Link></p>
             </form>
         </div>
     )   
 }
 
-export default connect()(Login);
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps, { getLoggedIn })(Login);

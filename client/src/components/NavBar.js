@@ -8,9 +8,6 @@ const NavBar = () => {
             <div>
                 <h2>WEIGHTLIFTR</h2>
             </div>
-            {/* <div className="nav-links">
-                <Link to="/home"><a href="#">Home</a></Link>
-            </div> */}
         </div>
     )
 }
