@@ -1,12 +1,11 @@
 import React from "react";
 
-const WorkoutCard = ({workout}) => {
+const WorkoutCard = () => {
     return (
         <div>
-            <h2>{workout.name}</h2>
+
         </div>
     )
 }
 
 export default WorkoutCard;
-

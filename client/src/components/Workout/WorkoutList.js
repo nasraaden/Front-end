@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
-
-import WorkoutCard from "./WorkoutCard";
 
 const workouts = [
     {
@@ -11,7 +8,7 @@ const workouts = [
         weight: "185",
         reps: "10",
         date: "2019-12-31",
-        region: "chest",
+        region: "chest"
     },
     {
         id: 2,
@@ -19,15 +16,15 @@ const workouts = [
         weight: "185",
         reps: "10",
         date: "2019-12-31",
-        region: "chest",
+        region: "chest"
     },
     {
         id: 3,
-        name: "push press",
+        name: "bench press",
         weight: "185",
         reps: "10",
         date: "2019-12-31",
-        region: "chest",
+        region: "chest"
     },
 ]
 
@@ -55,14 +52,7 @@ const WorkoutList = () => {
 
     return (
         <div>
-            {workout.map(workOut => {
-                    return(
-                    <Link to="/WorkoutCard">
-                    <WorkoutCard key={workOut.id} workout={workOut} />
-                    </Link>    
-                    
-                    )}
-            )}
+
         </div>
     )
 }
