@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
@@ -66,6 +67,10 @@ const UpdateWorkout = (props) => {
                 props.history.push("/workouts")
                 setWorkout(res.data)
             })
+    }
+
+    if (!workout){
+        return <div>Loading workout information...</div>
     }
 
     return (

@@ -57,6 +57,11 @@
   margin: 1%;
 }
 
+.add-button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px 1px rgba(90, 89, 136, 0.12);
+}
+
 .delete-button{
   color: #555555;
   letter-spacing: 1.25px;

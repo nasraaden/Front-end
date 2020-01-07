@@ -24,6 +24,9 @@ const AddWorkout = (props) => {
         props.addWorkout()
     }
 
+import Button from '@material-ui/core/Button';
+
+const AddWorkout = () => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',

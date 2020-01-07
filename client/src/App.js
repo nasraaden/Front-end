@@ -29,6 +29,7 @@ function App() {
       <Route path="/update-workout" component={UpdateWorkout}/>
 
    
+      <Route path="/AddWorkout" component={AddWorkout}/>
     </div>
   );
 }

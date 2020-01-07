@@ -51,7 +51,7 @@ const Signup = () => {
     },
     button: {
       margin: theme.spacing(1),
-      width: 300
+      width: 300,
     },
     input: {
       display: "none"
