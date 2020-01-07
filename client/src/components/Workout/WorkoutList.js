@@ -4,14 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import WorkoutCard from "./WorkoutCard";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import EditIcon from '@material-ui/icons/Edit';
-import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp';
-import Button from '@material-ui/core/Button';
-
-
 const workouts = [
     {
         id: 0,
@@ -37,10 +29,7 @@ const workouts = [
         date: "2019-12-31",
         region: "shoulders"
     },
-    
 ]
-
-
 
 const WorkoutList = () => {
     const [workout, setWorkout] = useState([])
@@ -59,43 +48,22 @@ const WorkoutList = () => {
         getWorkouts();
     }, []);
     // console.log(workout);
-    
-
-    const useStyles = makeStyles(theme => ({
-        container: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            border: '2px solid #d1d1d1',
-            borderRadius: "5px",
-            width: 400,
-            height: 50,
-            margin: '20px auto',
-            boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
-        },
-        input: {
-            display: 'none',
-        },
-    }));
-    const classes = useStyles(1);
-
 
     return (
-        <div>
+        <div >
             <h2>My Workout List</h2>
+            <div className="workoutlist">
             {workout.map(workOut => {
                 return(
-                    <div className={classes.container} key={workOut.id}>
-
+                    <div key={workOut.id} className="workout">
                     <WorkoutCard key={workOut.id} workout={workOut} />
-                    
-                    <Link to={`/workout/${workOut.id}`}>
-                    <EditIcon/>
-                    </Link>
+                    {/* <Link to={`/workout/${workOut.id}`}>
+                    <button className="edit-button"><EditIcon color="disabled"/> Edit </button>
+                    </Link> */}
                     </div>
                 )}
             )}
+            </div>
             <div>
             <Link to="/AddWorkOut"><button className="add-button"> + Add New Exercise</button></Link>
             </div>
