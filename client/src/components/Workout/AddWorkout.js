@@ -8,7 +8,8 @@ import {addWorkout} from "../../actions/workoutActions"
 const AddWorkout = (props) => {
 
     const [newWorkout, setNewWorkout] = useState({
-        id: Date.now(), name: "",
+        id: Date.now(), 
+        name: "",
         region: "",
         reps: "",
         weight: "",

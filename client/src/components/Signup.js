@@ -26,7 +26,6 @@ const Signup = () => {
       setUser({
         ...user,
         username: "",
-        email: "",
         password: "",
         checkPassword: ""
       });
@@ -64,17 +63,6 @@ const Signup = () => {
     <div>
       <form onSubmit={handleSubmit} className={classes.container}>
         <h2>SIGN UP</h2>
-        <div>
-          <TextField
-            id="email"
-            type="Email"
-            className={classes.textField}
-            label="Email"
-            margin="normal"
-            variant="outlined"
-            onChange={handleChanges}
-          />
-        </div>
         <div>
           <TextField
             id="username"
