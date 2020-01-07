@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const UpdateWorkout = props => {
+const AddWorkout = () => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
@@ -32,20 +31,14 @@ const UpdateWorkout = props => {
     }));
     const classes = useStyles(1);
 
-    const [workout, setWorkout] = useState();
-
-    const {id} = useParams();
-
-    // useEffect(() => {
-    //     axios
-    //         .get()
-    //         .then(response=> {
-    //             setWorkout(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    // },[id]);
+    const [workout, setWorkout] = useState({
+        workoutName: "",
+        region: "",
+        reps: "",
+        weight: "",
+        sets: "",
+        date: ""
+    });
 
     const handleChanges = e => {
         setWorkout({
@@ -55,10 +48,14 @@ const UpdateWorkout = props => {
 
     const submitForm = e => {
         e.preventDefault();
-    }
-
-    if (!workout){
-        return <div>Loading workout information...</div>
+        setWorkout({
+            workoutName: "",
+            region: "",
+            reps: "",
+            weight: "",
+            sets: "",
+            date: ""
+        });
     }
 
     return (
@@ -168,4 +165,4 @@ const UpdateWorkout = props => {
     )
 }
 
-export default UpdateWorkout;
+export default AddWorkout;
