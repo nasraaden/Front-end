@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const UpdateWorkout = props => {
+const UpdateWorkout = () => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
@@ -165,4 +165,4 @@ const UpdateWorkout = props => {
     )
 }
 
-export default UpdateWorkout;
+export default AddWorkout;
