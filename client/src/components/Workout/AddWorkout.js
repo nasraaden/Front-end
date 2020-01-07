@@ -30,11 +30,11 @@ const AddWorkout = (props) => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            background: '#FAFAFA',
+            background: 'white',
             width: 400,
             height: 530,
             margin: '50px auto',
-            boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
+            boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
         },
         textField: {
             marginLeft: theme.spacing(1),

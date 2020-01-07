@@ -8,7 +8,7 @@ export const LOGIN_FAIL ="LOGIN_FAIL";
 export const getLoggedIn = creds => dispatch => {
     dispatch({type: LOGIN_START})
     return axios
-    .post("/login", creds)
+    .post("https://weightlifting-app.herokuapp.com/api/login", creds)
     .then(res => {
         localStorage.setItem("token", res.data.payload)
         dispatch({type: LOGIN_SUCCESS, payload: res.data.payload})

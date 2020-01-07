@@ -48,12 +48,13 @@
 .add-button{
   width: 200px;
   height: 50px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
-  border: 1px solid #00A35E;
+  border: 2px solid #00A35E;
   color: #00A35E;
   border-radius: 4px;
   cursor: pointer;
+  margin: 1%;
 }
 
 .delete-button{
@@ -78,18 +79,33 @@
   border-radius: 5px;
 }
 
+.update-button{
+  line-height: 19px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  /* background: #d1d1d1; */
+  cursor: pointer;
+}
+
 /* Workout List styling */
 .workoutlist{
   display: flex;
   flex-wrap: wrap;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
 
 .workout{
-  margin: 1%;
-  width: 200px;
-  border: 1px solid #D1D1D1;
+  margin: 10px;
+  width: 300px;
+  font-size: 1.5rem;
+  border: 2px solid #d1d1d1;
   border-radius: 5px;
+}
+
+h2{
+  font-weight: normal;
 }
 

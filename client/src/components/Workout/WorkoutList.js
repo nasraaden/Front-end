@@ -68,18 +68,10 @@ const workouts = [
         weight: "185",
         date: "2019-12-31",
     },
-    {
-        id: 9,
-        name: "Bench Press",
-        region: "chest",
-        reps: "10",
-        weight: "185",
-        date: "2019-12-31",
-    },
 ]
 
 
-const WorkoutList = () => {
+const WorkoutList = props => {
     const [workout, setWorkout] = useState([])
     useEffect(() => {
         const getWorkouts = () => {
@@ -97,14 +89,20 @@ const WorkoutList = () => {
     }, []);
     console.log(workout);
 
+    const addWorkout = e => {
+        e.preventDefault()
+        props.history.push("/add-workout")
+    }
+
 return (
     <div>
-        <h2>My Exercise List</h2>
+        <h2>My Workout List</h2>
         <div className="workoutlist">
             {workout.map(workOut => (
                 <WorkoutCard key={workOut.id} workout={workOut} />
-            ))}
+            ))}     
         </div>
+        <button className="add-button" onClick={addWorkout}>+ Add Exercise</button>
     </div>
 )
 }
