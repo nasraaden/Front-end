@@ -5,7 +5,7 @@ import axios from "axios";
 import {Link} from "react-router-dom"
 
 
-const Workout = (props) => {
+const Workout = props => {
     const [workout, setWorkout] = useState([])
     console.log(props);
     
@@ -27,10 +27,22 @@ const Workout = (props) => {
 
    console.log(workouts);
 
-   const edit = e => {
+   const editWorkout = e => {
     e.preventDefault();
     props.history.push(`/updateworkout/${workout.id}`);
   };
+
+  const deleteWorkout = e => {
+      e.preventDefault();
+      // delete request
+      axios
+        .delete(`workout/${workout.id}`)
+        .then(res => {
+            setWorkout(res.data)
+            props.history.push("/workout")
+        })
+        .catch(err => console.log(err))
+    }
 
     return (
         <div>
