@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 
 const WorkoutCard = ({workout}) => {
     return (
-        <div>
-
-            <Link to={`/workout/ ${workout.id}`}>
-            <p>{workout.name}</p>
+        <div className="workout">
+            <Link to={`/workouts/${workout.id}`}>
+                <p>{workout.name}</p>
             </Link>
-
         </div>
     )
 }

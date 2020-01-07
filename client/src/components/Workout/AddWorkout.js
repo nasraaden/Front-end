@@ -1,11 +1,19 @@
 import React, {useState} from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 import {connect} from "react-redux"
-import {addWorkout} from "../actions/workoutActions"
+import {addWorkout} from "../../actions/workoutActions"
 
-const AddWorkout = () => {
+const AddWorkout = (props) => {
 
-    const [newWorkout, setNewWorkout] = useState({id: Date.now(), name: "", reps: "", date: "", region: ""})
+    const [newWorkout, setNewWorkout] = useState({
+        id: Date.now(), name: "",
+        region: "",
+        reps: "",
+        weight: "",
+        date: ""
+    })
 
     const handleChanges = e => {
         e.preventDefault();
@@ -24,7 +32,7 @@ const AddWorkout = () => {
             alignItems: 'center',
             background: '#FAFAFA',
             width: 400,
-            height: 500,
+            height: 530,
             margin: '50px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
         },
@@ -52,7 +60,7 @@ const AddWorkout = () => {
                     <TextField
                         id="name"
                         className={classes.textField}
-                        label="Name"
+                        label="Workout Name"
                         margin="normal"
                         variant="outlined"
                         onChange={handleChanges}
@@ -61,9 +69,20 @@ const AddWorkout = () => {
                 </div>
                 <div>
                     <TextField
+                        id="region"
+                        className={classes.textField}
+                        label="Muscle Region"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={handleChanges}
+                        value={newWorkout.region}
+                    />
+                </div>
+                <div>
+                    <TextField
                         id="reps"
                         className={classes.textField}
-                        label="Reps Completed"
+                        label="Reps"
                         margin="normal"
                         variant="outlined"
                         onChange={handleChanges}
@@ -71,10 +90,28 @@ const AddWorkout = () => {
                     />
                 </div>
                 <div>
+                <TextField 
+                    id="weight"
+                    className={classes.textField}
+                    label="lbs"
+                    type="number"
+                    inputProps={
+                        {
+                            min: "0",
+                            step: "1"
+                        }
+                    }
+                    margin="normal"
+                    variant="outlined"
+                    onChange={handleChanges}
+                    name="weight"
+                    value={newWorkout.weight}
+                />
+            </div>
+                <div>
                     <TextField
                         id="date"
                         className={classes.textField}
-                        label="Date"
                         type="date"
                         margin="normal"
                         variant="outlined"
@@ -82,19 +119,9 @@ const AddWorkout = () => {
                         value={newWorkout.date}
                     />
                 </div>
-                <div>
-                    <TextField
-                        id="region"
-                        className={classes.textField}
-                        label="Region"
-                        margin="normal"
-                        variant="outlined"
-                        onChange={handleChanges}
-                        value={newWorkout.region}
-                    />
-                </div>
-                <button type="submit">Add</button>
+                <button className="submit-button">Add</button>
             </form>
+            
         </div>
     )
 }

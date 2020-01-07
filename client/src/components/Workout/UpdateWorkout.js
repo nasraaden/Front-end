@@ -1,10 +1,10 @@
-import React from "react";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import axios from "axios";
+// import Button from '@material-ui/core/Button';
 
-const UpdateWorkout = () => {
+const UpdateWorkout = (props) => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
@@ -13,6 +13,7 @@ const UpdateWorkout = () => {
             alignItems: 'center',
             background: '#FAFAFA',
             width: 400,
+            height: 530,
             margin: '50px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
         },
@@ -33,47 +34,55 @@ const UpdateWorkout = () => {
     const classes = useStyles(1);
 
     const [workout, setWorkout] = useState({
-        workoutName: "",
+        name: "",
         region: "",
         reps: "",
         weight: "",
-        sets: "",
         date: ""
     });
 
+    useEffect(() => {
+        axios
+            .get(`/workouts/${props.match.params.id}`)
+            .then(res => {
+                setWorkout(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [props.match.params.id])
+
     const handleChanges = e => {
+        e.preventDefault();
         setWorkout({
-            ...workout, [e.target.name]: e.target.value
+            ...workout, 
+            [e.target.name]: e.target.value
         });
     }
 
     const submitForm = e => {
         e.preventDefault();
-        setWorkout({
-            workoutName: "",
-            region: "",
-            reps: "",
-            weight: "",
-            sets: "",
-            date: ""
-        });
+        axios
+            .put(`/workouts/${workout.id}`, workout)
+            .then(res => {
+                props.history.push("/workouts")
+                setWorkout(res.data)
+            })
     }
 
     return (
         <form onSubmit={submitForm} className={classes.container}>
-            <h2>ADD A WORKOUT</h2>
+            <h2>UPDATE WORKOUT</h2>
             <div>
                 <TextField
                     id="workoutName"
                     required="true"
                     className={classes.textField}
                     label="Workout Name"
-                    helperText="What is your exercise called?"
+                    // helperText="What is your exercise called?"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
                     name="workoutName"
-                    value={workout.workoutName}
+                    value={workout.name}
                 />
             </div>
             <div>
@@ -81,7 +90,7 @@ const UpdateWorkout = () => {
                     id="region"
                     className={classes.textField}
                     label="Muscle Region"
-                    helperText="Muscle group this targets"
+                    // helperText="Muscle group this targets"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
@@ -130,26 +139,6 @@ const UpdateWorkout = () => {
             </div>
             <div>
                 <TextField 
-                    id="sets"
-                    required="true"
-                    className={classes.textField}
-                    label="Amount of sets"
-                    type="number"
-                    inputProps={
-                        {
-                            min: "0",
-                            step: "1"
-                        }
-                    }
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="sets"
-                    value={workout.sets}
-                />
-            </div>
-            <div>
-                <TextField 
                     id="date"
                     required="true"
                     className={classes.textField}
@@ -161,7 +150,7 @@ const UpdateWorkout = () => {
                     value={workout.date}
                 />
             </div>
-            <Button variant="contained" className={classes.button} onClick={submitForm}>Add Workout!</Button>
+            <button className="submit-button" onClick={submitForm}>Save</button>
         </form>
     )
 }

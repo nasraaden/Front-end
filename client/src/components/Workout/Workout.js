@@ -1,4 +1,3 @@
-import React from "react";
 import React, {useState, useEffect} from "react";
 import { workouts } from "./WorkoutList";
 import axios from "axios";
@@ -25,7 +24,6 @@ const Workout = () => {
 
     return (
         <div>
-
             <h3>{workout.name}</h3>
             <p>{workout.weight}</p>
             <p>{workout.reps}</p>
@@ -34,3 +32,5 @@ const Workout = () => {
         </div>
     )
 }
+
+export default Workout;

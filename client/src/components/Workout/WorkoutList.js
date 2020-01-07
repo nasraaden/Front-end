@@ -1,30 +1,80 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
+import WorkoutCard from "./WorkoutCard"
+
 const workouts = [
     {
         id: 1,
-        name: "bench press",
-        weight: "185",
+        name: "Bench Press",
+        region: "chest",
         reps: "10",
+        weight: "185",
         date: "2019-12-31",
-        region: "chest"
     },
     {
         id: 2,
-        name: "squat",
-        weight: "185",
+        name: "Squat",
+        region: "chest",
         reps: "10",
+        weight: "185",
         date: "2019-12-31",
-        region: "chest"
     },
     {
         id: 3,
-        name: "bench press",
-        weight: "185",
+        name: "Bench Press",
+        region: "chest",
         reps: "10",
+        weight: "185",
         date: "2019-12-31",
-        region: "chest"
+    },
+    {
+        id: 4,
+        name: "Bench Press",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
+    },
+    {
+        id: 5,
+        name: "Squat",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
+    },
+    {
+        id: 6,
+        name: "Bench Press",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
+    },
+    {
+        id: 7,
+        name: "Bench Press",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
+    },
+    {
+        id: 8,
+        name: "Squat",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
+    },
+    {
+        id: 9,
+        name: "Bench Press",
+        region: "chest",
+        reps: "10",
+        weight: "185",
+        date: "2019-12-31",
     },
 ]
 
@@ -49,12 +99,12 @@ const WorkoutList = () => {
 
 return (
     <div>
-
-        {workout.map(workOut => {
-            return(
+        <h2>My Exercise List</h2>
+        <div className="workoutlist">
+            {workout.map(workOut => (
                 <WorkoutCard key={workOut.id} workout={workOut} />
-            )}
-        )}
+            ))}
+        </div>
     </div>
 )
 }
