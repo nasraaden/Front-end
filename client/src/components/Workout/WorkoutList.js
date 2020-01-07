@@ -7,14 +7,15 @@ import WorkoutCard from "./WorkoutCard";
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import MenuSharpIcon from '@material-ui/icons/MenuSharp';
+import EditIcon from '@material-ui/icons/Edit';
 import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp';
 import Button from '@material-ui/core/Button';
+
 
 const workouts = [
     {
         id: 0,
-        name: "bench press",
+        name: "Bench Press",
         weight: "185",
         reps: "10",
         date: "2019-12-31",
@@ -22,7 +23,7 @@ const workouts = [
     },
     {
         id: 1,
-        name: "squat",
+        name: "Squat",
         weight: "185",
         reps: "10",
         date: "2019-12-31",
@@ -30,7 +31,7 @@ const workouts = [
     },
     {
         id: 2,
-        name: "push-press",
+        name: "Push Press",
         weight: "185",
         reps: "10",
         date: "2019-12-31",
@@ -65,8 +66,10 @@ const WorkoutList = () => {
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center',
-            background: '#FAFAFA',
-            width: '80%',
+            border: '2px solid #d1d1d1',
+            borderRadius: "5px",
+            width: 400,
+            height: 50,
             margin: '50px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
         },
@@ -82,27 +85,26 @@ const WorkoutList = () => {
     const classes = useStyles(1);
 
 
-return (
-    <div>
-
-        {workout.map(workOut => {
-            return(
-                <div className={classes.container} key={workOut.id}>
-                <WorkoutCard key={workOut.id} workout={workOut} />
-                <Link to={`/workout/${workOut.id}`}>
-                    
-                <MenuSharpIcon/>
-                </Link>
-                </div>
-               
+    return (
+        <div>
+            <h2>My Workout List</h2>
+            {workout.map(workOut => {
+                return(
+                    <div className={classes.container} key={workOut.id}>
+                        
+                    <WorkoutCard key={workOut.id} workout={workOut} />
+                    <Link to={`/workout/${workOut.id}`}>
+                    <EditIcon/>
+                    </Link>
+                    </div>
+                )}
             )}
-        )}
 
-        <div className="home-container">
-        <Link to="/AddWorkOut"><button className={classes.button}> + Add New Exercise</button></Link>
+            <div className="home-container">
+            <Link to="/AddWorkOut"><button className={classes.button}> + Add New Exercise</button></Link>
+            </div>
         </div>
-    </div>
-)
+    )
 }
 
 export default WorkoutList;

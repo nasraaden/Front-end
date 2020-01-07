@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Signup = () => {
   const [user, setUser] = useState({
-    email: "",
     username: "",
     password: "",
     checkPassword: ""
@@ -37,11 +36,11 @@ const Signup = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      background: "#FAFAFA",
+      background: "white",
       width: 400,
-      height: 500,
+      height: 430,
       margin: "50px auto",
-      boxShadow: "0 2px 5px 1px rgba(90, 89, 136, 0.12)"
+      boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
     },
     textField: {
       marginLeft: theme.spacing(1),
@@ -51,7 +50,7 @@ const Signup = () => {
     },
     button: {
       margin: theme.spacing(1),
-      width: 300
+      width: 300,
     },
     input: {
       display: "none"

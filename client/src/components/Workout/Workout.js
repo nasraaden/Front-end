@@ -26,14 +26,21 @@ const Workout = (props) => {
 
    console.log(workouts);
 
-    return (
-        <div >
+   const edit = e => {
+    e.preventDefault();
+    props.history.push(`/updateworkout/${workout.id}`);
+  };
 
-            <h3>{workout.name}</h3>
-            <p>{workout.weight}</p>
-            <p>{workout.reps}</p>
-            <p>{workout.date}</p>
-            <p>{workout.region}</p>
+    return (
+        <div className="workout-container">
+            <h3>{`${workout.name}`}</h3>
+            <p>{`Weight: ${workout.weight} lbs`}</p>
+            <p>{`Reps Completed: ${workout.reps}`}</p>
+            <p>{`Date: ${workout.date}`}</p>
+            <p>{`Region: ${workout.region}`}</p>
+
+            <button className="submit-button">Edit</button>
+            <button className="delete-button">Delete</button>
         </div>
     )
 }

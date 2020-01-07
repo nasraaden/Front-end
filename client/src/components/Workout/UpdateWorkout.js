@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios';
-import { useParams} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import axios from "axios";
+// import Button from '@material-ui/core/Button';
 
-const UpdateWorkout = props => {
+const UpdateWorkout = (props) => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            background: '#FAFAFA',
+            background: 'white',
             width: 400,
+            height: 530,
             margin: '50px auto',
-            boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
+            boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
         },
         textField: {
             marginLeft: theme.spacing(1),
@@ -33,34 +33,44 @@ const UpdateWorkout = props => {
     }));
     const classes = useStyles(1);
 
-    const [workout, setWorkout] = useState();
+    const [workout, setWorkout] = useState({
+        name: "",
+        region: "",
+        reps: "",
+        weight: "",
+        date: ""
+    });
 
-    const {id} = useParams();
-
-    // useEffect(() => {
-    //     axios
-    //         .get()
-    //         .then(response=> {
-    //             setWorkout(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    // },[id]);
+    useEffect(() => {
+        axios
+            .get(`/workouts/${props.match.params.id}`)
+            .then(res => {
+                setWorkout(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [props.match.params.id])
 
     const handleChanges = e => {
+        e.preventDefault();
         setWorkout({
-            ...workout, [e.target.name]: e.target.value
+            ...workout, 
+            [e.target.name]: e.target.value
         });
     }
 
     const submitForm = e => {
         e.preventDefault();
+        axios
+            .put(`/workouts/${workout.id}`, workout)
+            .then(res => {
+                props.history.push("/workouts")
+                setWorkout(res.data)
+            })
     }
 
-    // if (!workout){
-    //     return <div>Loading workout information...</div>
-    // }
+    if (!workout){
+        return <div>Loading workout information...</div>
+    }
 
     return (
         <form onSubmit={submitForm} className={classes.container}>
@@ -71,12 +81,12 @@ const UpdateWorkout = props => {
                     required="true"
                     className={classes.textField}
                     label="Workout Name"
-                    helperText="What is your exercise called?"
+                    // helperText="What is your exercise called?"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
                     name="workoutName"
-                    
+                    value={workout.name}
                 />
             </div>
             <div>
@@ -84,12 +94,12 @@ const UpdateWorkout = props => {
                     id="region"
                     className={classes.textField}
                     label="Muscle Region"
-                    helperText="Muscle group this targets"
+                    // helperText="Muscle group this targets"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
                     name="region"
-                    
+                    value={workout.region}
                 />
             </div>
             <div>
@@ -109,7 +119,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="reps"
-                    
+                    value={workout.reps}
                 />
             </div>
             <div>
@@ -128,27 +138,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="weight"
-                    
-                />
-            </div>
-            <div>
-                <TextField 
-                    id="sets"
-                    required="true"
-                    className={classes.textField}
-                    label="Amount of sets"
-                    type="number"
-                    inputProps={
-                        {
-                            min: "0",
-                            step: "1"
-                        }
-                    }
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="sets"
-                   
+                    value={workout.weight}
                 />
             </div>
             <div>
@@ -161,10 +151,10 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="date"
-                    
+                    value={workout.date}
                 />
             </div>
-            <button className="save-button" type="submit">Save</button>
+            <button className="submit-button" onClick={submitForm}>Save</button>
         </form>
     )
 }

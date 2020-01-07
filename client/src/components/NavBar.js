@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <div className="nav-bar">
             <div>
-                <h2>WEIGHTLIFTR</h2>
+                <h2>Weightlifting Journal</h2>
             </div>
         </div>
     )
