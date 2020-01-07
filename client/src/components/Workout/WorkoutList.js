@@ -4,13 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import WorkoutCard from "./WorkoutCard";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import EditIcon from '@material-ui/icons/Edit';
-import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp';
-
-
 const workouts = [
     {
         id: 0,
@@ -36,47 +29,6 @@ const workouts = [
         date: "2019-12-31",
         region: "shoulders"
     },
-    {
-        id: 3,
-        name: "Bench Press",
-        weight: "185",
-        reps: "10",
-        date: "2019-12-31",
-        region: "chest"
-    },
-    {
-        id: 4,
-        name: "Squat",
-        weight: "185",
-        reps: "10",
-        date: "2019-12-31",
-        region: "chest"
-    },
-    {
-        id: 5,
-        name: "Push Press",
-        weight: "185",
-        reps: "10",
-        date: "2019-12-31",
-        region: "shoulders"
-    },
-    {
-        id: 6,
-        name: "Bench Press",
-        weight: "185",
-        reps: "10",
-        date: "2019-12-31",
-        region: "chest"
-    },
-    {
-        id: 7,
-        name: "Squat",
-        weight: "185",
-        reps: "10",
-        date: "2019-12-31",
-        region: "chest"
-    },
-    
 ]
 
 const WorkoutList = () => {
