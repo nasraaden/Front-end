@@ -10,7 +10,7 @@ import Signup from "./components/Signup";
 import Workout from "./components/Workout/Workout";
 import UpdateWorkout from "./components/Workout/UpdateWorkout";
 import WorkoutList from "./components/Workout/WorkoutList";
-
+import AddWorkout from "./components/Workout/AddWorkout";
 import PrivateRoute from "./utils/privateRoute";
 
 
@@ -28,7 +28,7 @@ function App() {
       <Route path="/workout/:id" component={Workout}/>
       <Route exact path="/workout" component={WorkoutList}/>
    
-      <Route path="/AddWorkout" component={UpdateWorkout}/>
+      <Route path="/UdateWorkout" component={UpdateWorkout}/>
       <Route path="/AddWorkout" component={AddWorkout}/>
     </div>
   );
