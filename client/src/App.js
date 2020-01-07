@@ -19,13 +19,14 @@ function App() {
     <div className="App">
       <NavBar />
 
-        <WorkoutList />
+        
       
 
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
-
+      <Route path="/workout/:id" component={Workout}/>
+      <Route exact path="/workout" component={WorkoutList}/>
    
       <Route path="/AddWorkout" component={UpdateWorkout}/>
     </div>
