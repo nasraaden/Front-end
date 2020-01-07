@@ -9,7 +9,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import EditIcon from '@material-ui/icons/Edit';
 import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp';
-import Button from '@material-ui/core/Button';
 
 
 const workouts = [
@@ -37,6 +36,7 @@ const workouts = [
         date: "2019-12-31",
         region: "shoulders"
     },
+    
 ]
 
 
@@ -73,11 +73,6 @@ const WorkoutList = () => {
             margin: '20px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
         },
-       
-        button: {
-            margin: theme.spacing(1),
-            width: 300
-        },
         input: {
             display: 'none',
         },
@@ -91,15 +86,15 @@ const WorkoutList = () => {
             {workout.map(workOut => {
                 return(
                     <div className={classes.container} key={workOut.id}>
-                        
+
                     <WorkoutCard key={workOut.id} workout={workOut} />
+                    
                     <Link to={`/workout/${workOut.id}`}>
                     <EditIcon/>
                     </Link>
                     </div>
                 )}
             )}
-
             <div>
             <Link to="/AddWorkOut"><button className="add-button"> + Add New Exercise</button></Link>
             </div>

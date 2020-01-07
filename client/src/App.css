@@ -59,7 +59,11 @@
 
 .add-button:hover{
   transform: translateY(-2px);
+<<<<<<< HEAD
   box-shadow: 0 5px 5px 5px rgba(90, 89, 136, 0.12);
+=======
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.12);
+>>>>>>> e19c1d6984f40dcc96f6f5ae552a42e1b12c0059
 }
 
 .delete-button{
