@@ -11,6 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp';
 import Button from '@material-ui/core/Button';
 
+
 const workouts = [
     {
         id: 0,
@@ -84,26 +85,26 @@ const WorkoutList = () => {
     const classes = useStyles(1);
 
 
-return (
-    <div>
-
-        {workout.map(workOut => {
-            return(
-                <div className={classes.container} key={workOut.id}>
-                <WorkoutCard key={workOut.id} workout={workOut} />
-                <Link to={`/workout/${workOut.id}`}>
-                <EditIcon/>
-                </Link>
-                </div>
-               
+    return (
+        <div>
+            <h2>My Workout List</h2>
+            {workout.map(workOut => {
+                return(
+                    <div className={classes.container} key={workOut.id}>
+                        
+                    <WorkoutCard key={workOut.id} workout={workOut} />
+                    <Link to={`/workout/${workOut.id}`}>
+                    <EditIcon/>
+                    </Link>
+                    </div>
+                )}
             )}
-        )}
 
-        <div className="home-container">
-        <Link to="/AddWorkOut"><button className={classes.button}> + Add New Exercise</button></Link>
+            <div className="home-container">
+            <Link to="/AddWorkOut"><button className={classes.button}> + Add New Exercise</button></Link>
+            </div>
         </div>
-    </div>
-)
+    )
 }
 
 export default WorkoutList;

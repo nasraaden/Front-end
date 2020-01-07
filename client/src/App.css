@@ -63,33 +63,25 @@
 }
 
 .delete-button{
-  color: #555555;
-  letter-spacing: 1.25px;
+  height: 40px;
+  width: 80px;
+  font-size: 1rem;
+  line-height: 19px;
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: 1.4rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  border: 2px solid #d1d1d1;
   cursor: pointer;
 }
 
 .submit-button{
   height: 40px;
   width: 80px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #FFFFFF;
   line-height: 19px;
   text-transform: uppercase;
+  border-radius: 5px;
   background: #00A35E;
-  border-radius: 5px;
-}
-
-.update-button{
-  line-height: 19px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #d1d1d1;
-  /* background: #d1d1d1; */
   cursor: pointer;
 }
 
@@ -114,3 +106,15 @@ h2{
   font-weight: normal;
 }
 
+.workout-container{
+  border: 2px solid #ffff;
+  margin: 30px auto;
+  font-size: 1.2rem;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 1px rgba(111, 111, 121, 0.12);
+}
+
+.workout-container button{
+  margin: 1rem;
+}

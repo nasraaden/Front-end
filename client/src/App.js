@@ -22,8 +22,8 @@ function App() {
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
-      <Route path="/workouts/:id" component={Workout}/>
-      <Route exact path="/workouts" component={WorkoutList}/>
+      <Route path="/workout/:id" component={Workout}/>
+      <Route exact path="/workout" component={WorkoutList}/>
    
       <Route path="/updateworkout" component={UpdateWorkout}/>
       <Route path="/addworkout" component={AddWorkout}/>
