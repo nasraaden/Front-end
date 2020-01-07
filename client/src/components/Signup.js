@@ -4,8 +4,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { getSignedUp } from "../actions/authActions";
+import { connect } from "react-redux";
 
-const Signup = () => {
+const Signup = props => {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -15,13 +17,15 @@ const Signup = () => {
   const handleChanges = e => {
     setUser({
       ...user,
-      [e.target.name]: e.target.value
+      [e.target.id]: e.target.value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (user.password === user.checkPassword) {
+      props.getSignedUp({ username: user.username, password: user.password });
+      props.history.push("/workout");
       setUser({
         ...user,
         username: "",
@@ -50,7 +54,7 @@ const Signup = () => {
     },
     button: {
       margin: theme.spacing(1),
-      width: 300,
+      width: 300
     },
     input: {
       display: "none"
@@ -94,7 +98,7 @@ const Signup = () => {
             onChange={handleChanges}
           />
         </div>
-        <Button variant="contained" className={classes.button}>
+        <Button type="submit" variant="contained" className={classes.button}>
           Signup
         </Button>
         <p>
@@ -105,4 +109,8 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, { getSignedUp })(Signup);
