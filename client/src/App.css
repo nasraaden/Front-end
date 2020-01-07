@@ -125,3 +125,14 @@ h2{
   font-size: 1rem;
   border: 2px solid #d1d1d1;
 }
+
+/* Workout card individual name */
+.workout-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.workout-card p{
+  margin-right: 10px;
+}
