@@ -1,15 +1,16 @@
 import React from "react";
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import { workouts } from "./WorkoutList";
 import axios from "axios";
 
 
-const Workout = () => {
+const Workout = (props) => {
     const [workout, setWorkout] = useState([])
-
+    console.log(props);
+    
 
     useEffect(() => {
-        // const id = props.match.params.id
+        const id = props.match.params.id
 
         // axios
         //     .get(`${id}`)
@@ -20,11 +21,13 @@ const Workout = () => {
         //         console.error(error);
         //     });
 
-          setWorkout(workouts) 
-    }, [])
+          setWorkout(workouts[id]) 
+    }, [props.match.params.id])
+
+   console.log(workouts);
 
     return (
-        <div>
+        <div >
 
             <h3>{workout.name}</h3>
             <p>{workout.weight}</p>
@@ -34,3 +37,5 @@ const Workout = () => {
         </div>
     )
 }
+
+export default Workout;
