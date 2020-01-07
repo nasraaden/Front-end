@@ -8,7 +8,8 @@ import {addWorkout} from "../../actions/workoutActions"
 const AddWorkout = (props) => {
 
     const [newWorkout, setNewWorkout] = useState({
-        id: Date.now(), name: "",
+        id: Date.now(), 
+        name: "",
         region: "",
         reps: "",
         weight: "",
@@ -23,10 +24,7 @@ const AddWorkout = (props) => {
     const handleSubmit = e => {
         props.addWorkout()
     }
-
-import Button from '@material-ui/core/Button';
-
-const AddWorkout = () => {
+    
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',

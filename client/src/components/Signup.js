@@ -25,7 +25,6 @@ const Signup = () => {
       setUser({
         ...user,
         username: "",
-        email: "",
         password: "",
         checkPassword: ""
       });

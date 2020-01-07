@@ -10,9 +10,8 @@ import Signup from "./components/Signup";
 import Workout from "./components/Workout/Workout";
 import UpdateWorkout from "./components/Workout/UpdateWorkout";
 import WorkoutList from "./components/Workout/WorkoutList";
-
-import PrivateRoute from "./utils/privateRoute";
 import AddWorkout from "./components/Workout/AddWorkout";
+import PrivateRoute from "./utils/privateRoute";
 
 
 function App() {
@@ -23,13 +22,11 @@ function App() {
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
-      <Route exact path="/workouts" component={WorkoutList} />
-      <Route path="workouts/:id" component={Workout} />
-      <Route path="/add-workout" component={AddWorkout} />
-      <Route path="/update-workout" component={UpdateWorkout}/>
-
+      <Route path="/workouts/:id" component={Workout}/>
+      <Route exact path="/workouts" component={WorkoutList}/>
    
-      <Route path="/AddWorkout" component={AddWorkout}/>
+      <Route path="/updateworkout" component={UpdateWorkout}/>
+      <Route path="/addworkout" component={AddWorkout}/>
     </div>
   );
 }
