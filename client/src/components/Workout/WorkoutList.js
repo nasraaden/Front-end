@@ -37,6 +37,7 @@ const workouts = [
         date: "2019-12-31",
         region: "shoulders"
     },
+    
 ]
 
 
@@ -70,13 +71,8 @@ const WorkoutList = () => {
             borderRadius: "5px",
             width: 400,
             height: 50,
-            margin: '50px auto',
+            margin: '20px auto',
             boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
-        },
-       
-        button: {
-            margin: theme.spacing(1),
-            width: 300
         },
         input: {
             display: 'none',
@@ -91,17 +87,17 @@ const WorkoutList = () => {
             {workout.map(workOut => {
                 return(
                     <div className={classes.container} key={workOut.id}>
-                        
+
                     <WorkoutCard key={workOut.id} workout={workOut} />
+                    
                     <Link to={`/workout/${workOut.id}`}>
                     <EditIcon/>
                     </Link>
                     </div>
                 )}
             )}
-
-            <div className="home-container">
-            <Link to="/AddWorkOut"><button className={classes.button}> + Add New Exercise</button></Link>
+            <div>
+            <Link to="/AddWorkOut"><button className="add-button"> + Add New Exercise</button></Link>
             </div>
         </div>
     )
