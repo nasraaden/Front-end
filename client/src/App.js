@@ -25,9 +25,7 @@ function App() {
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
-
-   
-      <Route path="/AddWorkout" component={UpdateWorkout}/>
+      <Route path="/AddWorkout" component={AddWorkout}/>
     </div>
   );
 }
