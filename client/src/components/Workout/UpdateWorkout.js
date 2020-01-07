@@ -58,13 +58,13 @@ const UpdateWorkout = props => {
         e.preventDefault();
     }
 
-    if (!workout){
-        return <div>Loading workout information...</div>
-    }
+    // if (!workout){
+    //     return <div>Loading workout information...</div>
+    // }
 
     return (
         <form onSubmit={submitForm} className={classes.container}>
-            <h2>ADD A WORKOUT</h2>
+            <h2>UPDATE WORKOUT</h2>
             <div>
                 <TextField
                     id="workoutName"
@@ -76,7 +76,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="workoutName"
-                    value={workout.workoutName}
+                    
                 />
             </div>
             <div>
@@ -89,7 +89,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="region"
-                    value={workout.region}
+                    
                 />
             </div>
             <div>
@@ -109,7 +109,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="reps"
-                    value={workout.reps}
+                    
                 />
             </div>
             <div>
@@ -128,7 +128,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="weight"
-                    value={workout.weight}
+                    
                 />
             </div>
             <div>
@@ -148,7 +148,7 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="sets"
-                    value={workout.sets}
+                   
                 />
             </div>
             <div>
@@ -161,10 +161,10 @@ const UpdateWorkout = props => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="date"
-                    value={workout.date}
+                    
                 />
             </div>
-            <Button variant="contained" className={classes.button} onClick={submitForm}>Add Workout!</Button>
+            <button className="save-button" type="submit">Save</button>
         </form>
     )
 }

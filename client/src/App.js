@@ -28,7 +28,7 @@ function App() {
       <Route path="/workout/:id" component={Workout}/>
       <Route exact path="/workout" component={WorkoutList}/>
    
-      <Route path="/UdateWorkout" component={UpdateWorkout}/>
+      <Route path="/UpdateWorkout" component={UpdateWorkout}/>
       <Route path="/AddWorkout" component={AddWorkout}/>
     </div>
   );

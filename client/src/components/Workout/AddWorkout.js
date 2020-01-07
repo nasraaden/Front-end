@@ -1,19 +1,40 @@
 import React, {useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
-const AddWorkout = () => {
+import {connect} from "react-redux"
+import {addWorkout} from "../../actions/workoutActions"
+
+const AddWorkout = (props) => {
+
+    const [newWorkout, setNewWorkout] = useState({
+        id: Date.now(), name: "",
+        region: "",
+        reps: "",
+        weight: "",
+        date: ""
+    })
+
+    const handleChanges = e => {
+        e.preventDefault();
+        setNewWorkout({...newWorkout, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = e => {
+        props.addWorkout()
+    }
+    
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            background: '#FAFAFA',
+            background: 'white',
             width: 400,
+            height: 530,
             margin: '50px auto',
-            boxShadow: '0 2px 5px 1px rgba(90, 89, 136, 0.12)'
+            boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
         },
         textField: {
             marginLeft: theme.spacing(1),
@@ -31,84 +52,44 @@ const AddWorkout = () => {
     }));
     const classes = useStyles(1);
 
-    const [workout, setWorkout] = useState({
-        workoutName: "",
-        region: "",
-        reps: "",
-        weight: "",
-        sets: "",
-        date: ""
-    });
-
-    const handleChanges = e => {
-        setWorkout({
-            ...workout, [e.target.name]: e.target.value
-        });
-    }
-
-    const submitForm = e => {
-        e.preventDefault();
-        setWorkout({
-            workoutName: "",
-            region: "",
-            reps: "",
-            weight: "",
-            sets: "",
-            date: ""
-        });
-    }
-
     return (
-        <form onSubmit={submitForm} className={classes.container}>
-            <h2>ADD A WORKOUT</h2>
-            <div>
-                <TextField
-                    id="workoutName"
-                    required="true"
-                    className={classes.textField}
-                    label="Workout Name"
-                    helperText="What is your exercise called?"
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="workoutName"
-                    value={workout.workoutName}
-                />
-            </div>
-            <div>
-                <TextField 
-                    id="region"
-                    className={classes.textField}
-                    label="Muscle Region"
-                    helperText="Muscle group this targets"
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="region"
-                    value={workout.region}
-                />
-            </div>
-            <div>
-                <TextField 
-                    id="reps"
-                    required="true"
-                    className={classes.textField}
-                    label="Reps"
-                    type="number"
-                    inputProps={
-                        {
-                            min: "0",
-                            step: "1"
-                        }
-                    }
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="reps"
-                    value={workout.reps}
-                />
-            </div>
-            <div>
+        <div>
+            <form className={classes.container} onSubmit={handleSubmit}>
+                <h2>ADD A WORKOUT</h2>
+                <div>
+                    <TextField
+                        id="name"
+                        className={classes.textField}
+                        label="Workout Name"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={handleChanges}
+                        value={newWorkout.name}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        id="region"
+                        className={classes.textField}
+                        label="Muscle Region"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={handleChanges}
+                        value={newWorkout.region}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        id="reps"
+                        className={classes.textField}
+                        label="Reps"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={handleChanges}
+                        value={newWorkout.reps}
+                    />
+                </div>
+                <div>
                 <TextField 
                     id="weight"
                     className={classes.textField}
@@ -124,45 +105,29 @@ const AddWorkout = () => {
                     variant="outlined"
                     onChange={handleChanges}
                     name="weight"
-                    value={workout.weight}
+                    value={newWorkout.weight}
                 />
             </div>
-            <div>
-                <TextField 
-                    id="sets"
-                    required="true"
-                    className={classes.textField}
-                    label="Amount of sets"
-                    type="number"
-                    inputProps={
-                        {
-                            min: "0",
-                            step: "1"
-                        }
-                    }
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="sets"
-                    value={workout.sets}
-                />
-            </div>
-            <div>
-                <TextField 
-                    id="date"
-                    required="true"
-                    className={classes.textField}
-                    type="date"
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChanges}
-                    name="date"
-                    value={workout.date}
-                />
-            </div>
-            <Button variant="contained" className={classes.button} onClick={submitForm}>Add Workout!</Button>
-        </form>
+                <div>
+                    <TextField
+                        id="date"
+                        className={classes.textField}
+                        type="date"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={handleChanges}
+                        value={newWorkout.date}
+                    />
+                </div>
+                <button className="submit-button">Add</button>
+            </form>
+            
+        </div>
     )
 }
 
-export default AddWorkout;
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, {addWorkout})(AddWorkout);
