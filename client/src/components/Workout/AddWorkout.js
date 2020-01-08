@@ -21,6 +21,7 @@ const AddWorkout = props => {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     props.addWorkout();
   };
 
