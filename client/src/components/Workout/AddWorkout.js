@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import {Link} from "react-router-dom";
 
 import { connect } from "react-redux";
 import { addWorkout } from "../../actions/workoutActions";
@@ -33,7 +34,7 @@ const AddWorkout = props => {
       background: "white",
       width: 400,
       height: 530,
-      margin: "50px auto",
+      margin: "20px auto",
       boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
     },
     textField: {
@@ -54,6 +55,7 @@ const AddWorkout = props => {
 
   return (
     <div>
+      <Link to="/workout"><button className="back-button">go back</button></Link>
       <form className={classes.container} onSubmit={handleSubmit}>
         <h2>ADD A WORKOUT</h2>
         <div>

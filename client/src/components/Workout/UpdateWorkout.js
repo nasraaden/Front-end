@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
+import {Link} from "react-router-dom"
 // import Button from '@material-ui/core/Button';
 
 const UpdateWorkout = (props) => {
@@ -14,7 +15,7 @@ const UpdateWorkout = (props) => {
             background: 'white',
             width: 400,
             height: 530,
-            margin: '50px auto',
+            margin: '40px auto',
             boxShadow: "0 5px 5px 5px rgba(90, 89, 136, 0.12)"
         },
         textField: {
@@ -43,12 +44,12 @@ const UpdateWorkout = (props) => {
 
     useEffect(() => {
         axios
-            .get(`/workouts/${props.match.params.id}`)
+            .get(`/workouts/${workout.id}`)
             .then(res => {
                 setWorkout(res.data)
             })
             .catch(err => console.log(err))
-    }, [props.match.params.id])
+    }, [])
 
     const handleChanges = e => {
         e.preventDefault();
@@ -78,7 +79,6 @@ const UpdateWorkout = (props) => {
             <div>
                 <TextField
                     id="workoutName"
-                    required="true"
                     className={classes.textField}
                     label="Workout Name"
                     // helperText="What is your exercise called?"
@@ -94,7 +94,6 @@ const UpdateWorkout = (props) => {
                     id="region"
                     className={classes.textField}
                     label="Muscle Region"
-                    // helperText="Muscle group this targets"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
@@ -105,7 +104,6 @@ const UpdateWorkout = (props) => {
             <div>
                 <TextField 
                     id="reps"
-                    required="true"
                     className={classes.textField}
                     label="Reps"
                     type="number"

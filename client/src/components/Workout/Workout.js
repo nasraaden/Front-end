@@ -25,7 +25,7 @@ const Workout = props => {
           setWorkout(workouts[id]) 
     }, [props.match.params.id])
 
-   console.log(workouts);
+//    console.log(workouts);
 
    const editWorkout = e => {
     e.preventDefault();
