@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 import WorkoutCard from "./WorkoutCard";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const workouts = [
     {
@@ -34,18 +35,19 @@ const workouts = [
 const WorkoutList = () => {
     const [workout, setWorkout] = useState([])
     useEffect(() => {
-        const getWorkouts = () => {
-            // axios
-            //     .get('')
-            //     .then( res => {
-            //         setWorkout(res.)
-            //     })
-            //     .catch( err => {
-            //         console.log("unable to grab workouts", err)
-            //     })
-            setWorkout(workouts);
-        }
-        getWorkouts();
+        // const getWorkouts = () => {
+            axiosWithAuth()
+                .get('/workouts')
+                .then( res => {
+                    console.log(res)
+                    setWorkout(res.data)
+                })
+                .catch( err => {
+                    console.log("unable to grab workouts", err)
+                })
+            // setWorkout(workouts);
+        // }
+        // getWorkouts();
     }, []);
     // console.log(workout);
 

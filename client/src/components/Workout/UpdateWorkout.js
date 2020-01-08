@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import {Link} from "react-router-dom"
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 // import Button from '@material-ui/core/Button';
 
 const UpdateWorkout = (props) => {
@@ -41,15 +42,15 @@ const UpdateWorkout = (props) => {
         weight: "",
         date: ""
     });
-
+console.log(props)
     useEffect(() => {
-        axios
-            .get(`/workouts/${workout.id}`)
+        axiosWithAuth()
+            .get(`/workouts/${props.match.params.id}`)
             .then(res => {
                 setWorkout(res.data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [props.match.params.id])
 
     const handleChanges = e => {
         e.preventDefault();
@@ -61,10 +62,10 @@ const UpdateWorkout = (props) => {
 
     const submitForm = e => {
         e.preventDefault();
-        axios
+        axiosWithAuth()
             .put(`/workouts/${workout.id}`, workout)
             .then(res => {
-                props.history.push("/workouts")
+                props.history.push("/workout")
                 setWorkout(res.data)
             })
     }
@@ -78,14 +79,13 @@ const UpdateWorkout = (props) => {
             <h2>UPDATE WORKOUT</h2>
             <div>
                 <TextField
-                    id="workoutName"
                     className={classes.textField}
                     label="Workout Name"
                     // helperText="What is your exercise called?"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
-                    name="workoutName"
+                    name="name"
                     value={workout.name}
                 />
             </div>
@@ -142,7 +142,7 @@ const UpdateWorkout = (props) => {
             <div>
                 <TextField 
                     id="date"
-                    required="true"
+                    // required="true"
                     className={classes.textField}
                     type="date"
                     margin="normal"

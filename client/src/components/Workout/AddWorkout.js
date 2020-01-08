@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import {Link} from "react-router-dom";
+import axios from "axios"
 
 import { connect } from "react-redux";
 import { addWorkout } from "../../actions/workoutActions";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const AddWorkout = props => {
   const [newWorkout, setNewWorkout] = useState({
@@ -16,13 +18,37 @@ const AddWorkout = props => {
     date: ""
   });
 
+  const [workouts, setWorkouts] = useState([])
+    useEffect(() => {
+        // const getWorkouts = () => {
+            axiosWithAuth()
+                .get('/workouts')
+                .then( res => {
+                    console.log(res)
+                    setWorkouts(res.data)
+                })
+                .catch( err => {
+                    console.log("unable to grab workouts", err)
+                })
+            // setWorkout(workouts);
+        // }
+        // getWorkouts();
+    }, []);
+
   const handleChanges = e => {
     e.preventDefault();
     setNewWorkout({ ...newWorkout, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
-    props.addWorkout();
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/workouts", newWorkout)
+      .then(res => {
+        setWorkouts({...workouts, newWorkout})
+      })
+      .catch(err => console.log(err.response))
+    props.history.push("/workout")
   };
 
   const useStyles = makeStyles(theme => ({
@@ -61,10 +87,12 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="name"
+            // required="true"
             className={classes.textField}
             label="Workout Name"
             margin="normal"
             variant="outlined"
+            name="name"
             onChange={handleChanges}
             value={newWorkout.name}
           />
@@ -72,10 +100,12 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="region"
+            // required="true"
             className={classes.textField}
             label="Muscle Region"
             margin="normal"
             variant="outlined"
+            name="region"
             onChange={handleChanges}
             value={newWorkout.region}
           />
@@ -83,10 +113,20 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="reps"
+            // required="true"
             className={classes.textField}
             label="Reps"
             margin="normal"
             variant="outlined"
+            name="reps"
+            type="number"
+            inputProps={
+              {
+                  min: "0",
+                  step: "1"
+              }
+            }
+            // onInput={newWorkout.reps=Math.round(newWorkout.reps)}
             onChange={handleChanges}
             value={newWorkout.reps}
           />
@@ -97,10 +137,13 @@ const AddWorkout = props => {
             className={classes.textField}
             label="lbs"
             type="number"
-            inputProps={{
-              min: "0",
-              step: "1"
-            }}
+            inputProps={
+              {
+                min: "0",
+                step: "1"
+              }
+            }
+            // onInput={newWorkout.weight=parseInt(newWorkout.weight, 10)}
             margin="normal"
             variant="outlined"
             onChange={handleChanges}
@@ -111,10 +154,12 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="date"
+            // required="true"
             className={classes.textField}
-            type="date"
             margin="normal"
             variant="outlined"
+            type="date"
+            name="date"
             onChange={handleChanges}
             value={newWorkout.date}
           />
