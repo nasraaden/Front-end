@@ -18,15 +18,15 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
       <PrivateRoute path="/workout/:id" component={Workout}/>
       <PrivateRoute exact path="/workout" component={WorkoutList}/>
-      <Route path="/updateworkout/:id" render={props => {
+      {/* <Route path="/updateworkout/:id" render={props => {
         return <UpdateWorkout {...props} />
-      }} />
+      }} /> */}
+      <PrivateRoute path="/updateworkout/:id" component={UpdateWorkout} />
       <PrivateRoute path="/addworkout" component={AddWorkout}/>
     </div>
   );

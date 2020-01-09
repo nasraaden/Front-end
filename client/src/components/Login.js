@@ -44,13 +44,13 @@ const Login = props => {
   });
 
   const handleChanges = e => {
-    setCredentials({ ...credentials, [e.target.id]: e.target.value });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const login = e => {
     e.preventDefault();
-    props.getLoggedIn(credentials);
-    props.history.push("/workout");
+    props.getLoggedIn(credentials).then(() => props.history.push("/workout"));
+    
   };
 
   return (
@@ -59,7 +59,7 @@ const Login = props => {
         <h2>LOGIN</h2>
         <div>
           <TextField
-            id="username"
+            name="username"
             className={classes.textField}
             label="Username"
             margin="normal"
@@ -69,7 +69,7 @@ const Login = props => {
         </div>
         <div>
           <TextField
-            id="password"
+            name="password"
             className={classes.textField}
             label="Password"
             type="password"
