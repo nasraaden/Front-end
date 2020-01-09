@@ -46,9 +46,7 @@ const Workout = props => {
             <div className="workout-container">
                 <h3>{workout.name}</h3>
                 <p>Weight: {workout.weight}</p>
-                <p>Reps Completed: {workout.reps}</p>
                 <p>Date: {workout.date}</p>
-                <p>Region: {workout.region}</p>
                 <button className="submit-button" onClick={editWorkout}>Edit</button>
                 <button className="delete-button" onClick={deleteWorkout}>Delete</button>
             </div>
