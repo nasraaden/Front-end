@@ -45,6 +45,8 @@ const Workout = props => {
             <Link to="/workout"><button className="back-button">go back</button></Link>
             <div className="workout-container">
                 <h3>{workout.name}</h3>
+                <p>Region: {workout.region}</p>
+                <p>Reps Completed: {workout.reps}</p>
                 <p>Weight: {workout.weight}</p>
                 <p>Date: {workout.date}</p>
                 <button className="submit-button" onClick={editWorkout}>Edit</button>
