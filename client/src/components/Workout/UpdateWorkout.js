@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import axios from "axios";
 import {Link} from "react-router-dom"
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-// import Button from '@material-ui/core/Button';
 
 const UpdateWorkout = (props) => {
     const useStyles = makeStyles(theme => ({
