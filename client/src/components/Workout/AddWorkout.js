@@ -15,7 +15,7 @@ const AddWorkout = props => {
   const [newWorkout, setNewWorkout] = useState(
     {
       name: "",
-      // user_id: user.id,
+      user_id: user.id,
       region: "",
       reps: "",
       weight: "",
