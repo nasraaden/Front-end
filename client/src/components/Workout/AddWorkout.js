@@ -5,8 +5,7 @@ import {Link} from "react-router-dom";
 import axios from "axios"
 import jwt from "jsonwebtoken"
 
-import { connect } from "react-redux";
-import { addWorkout } from "../../actions/workoutActions";
+// import { addWorkout } from "../../actions/workoutActions";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const AddWorkout = props => {
@@ -173,8 +172,8 @@ const AddWorkout = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return state;
-};
+// const mapStateToProps = state => {
+//   return state;
+// };
 
-export default connect(mapStateToProps, { addWorkout })(AddWorkout);
+export default AddWorkout;

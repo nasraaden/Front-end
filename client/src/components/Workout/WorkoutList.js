@@ -20,7 +20,7 @@ const WorkoutList = () => {
     }, []);
 
     return (
-        <div >
+        <div>
             <h2>My Workout List</h2>
             <div className="workoutlist">
             {workout.map(workOut => {
