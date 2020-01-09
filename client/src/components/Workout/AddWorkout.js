@@ -12,14 +12,16 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 const AddWorkout = props => {
   const user = jwt.decode(localStorage.getItem("token"))
   console.log("USERID", user.id)
-  const [newWorkout, setNewWorkout] = useState({
-    name: "",
-    user_id: user.id,
-    region: "",
-    reps: "",
-    weight: "",
-    date: ""
-  });
+  const [newWorkout, setNewWorkout] = useState(
+    {
+      name: "",
+      // user_id: user.id,
+      region: "",
+      reps: "",
+      weight: "",
+      date: ""
+    }
+  );
 
   const [workouts, setWorkouts] = useState([])
     useEffect(() => {
@@ -90,7 +92,7 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="name"
-            // required="true"
+            required={true}
             className={classes.textField}
             label="Workout Name"
             margin="normal"
@@ -103,7 +105,7 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="region"
-            // required="true"
+            required={true}
             className={classes.textField}
             label="Muscle Region"
             margin="normal"
@@ -116,7 +118,7 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="reps"
-            // required="true"
+            required={true}
             className={classes.textField}
             label="Reps"
             margin="normal"
@@ -129,8 +131,7 @@ const AddWorkout = props => {
                   step: "1"
               }
             }
-            // onInput={newWorkout.reps=Math.round(newWorkout.reps)}
-            onChange={handleChanges}
+            onChange={e => setNewWorkout({ ...newWorkout, [e.target.name]: parseInt(e.target.value) })}
             value={newWorkout.reps}
           />
         </div>
@@ -146,10 +147,9 @@ const AddWorkout = props => {
                 step: "1"
               }
             }
-            // onInput={newWorkout.weight=parseInt(newWorkout.weight, 10)}
             margin="normal"
             variant="outlined"
-            onChange={handleChanges}
+            onChange={e => setNewWorkout({ ...newWorkout, [e.target.name]: parseInt(e.target.value) })}
             name="weight"
             value={newWorkout.weight}
           />
@@ -157,7 +157,7 @@ const AddWorkout = props => {
         <div>
           <TextField
             id="date"
-            // required="true"
+            required={true}
             className={classes.textField}
             margin="normal"
             variant="outlined"

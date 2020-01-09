@@ -80,7 +80,7 @@ console.log(props)
                 <TextField
                     className={classes.textField}
                     label="Workout Name"
-                    // helperText="What is your exercise called?"
+                    required={true}
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
@@ -91,6 +91,7 @@ console.log(props)
             <div>
                 <TextField 
                     id="region"
+                    required={true}
                     className={classes.textField}
                     label="Muscle Region"
                     margin="normal"
@@ -103,6 +104,7 @@ console.log(props)
             <div>
                 <TextField 
                     id="reps"
+                    required={true}
                     className={classes.textField}
                     label="Reps"
                     type="number"
@@ -114,7 +116,7 @@ console.log(props)
                     }
                     margin="normal"
                     variant="outlined"
-                    onChange={handleChanges}
+                    onChange={e => setWorkout({ ...workout, [e.target.name]: parseInt(e.target.value) })}
                     name="reps"
                     value={workout.reps}
                 />
@@ -133,7 +135,7 @@ console.log(props)
                     }
                     margin="normal"
                     variant="outlined"
-                    onChange={handleChanges}
+                    onChange={e => setWorkout({ ...workout, [e.target.name]: parseInt(e.target.value) })}
                     name="weight"
                     value={workout.weight}
                 />
@@ -141,7 +143,7 @@ console.log(props)
             <div>
                 <TextField 
                     id="date"
-                    // required="true"
+                    required={true}
                     className={classes.textField}
                     type="date"
                     margin="normal"
