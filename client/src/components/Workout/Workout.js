@@ -1,6 +1,5 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import { workouts } from "./WorkoutList";
 import axios from "axios";
 import {Link} from "react-router-dom"
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -35,7 +34,6 @@ const Workout = props => {
 
   const deleteWorkout = e => {
       e.preventDefault();
-      // delete request
       axiosWithAuth()
         .delete(`/workouts/${workout.id}`)
         .then(res => {
@@ -54,7 +52,6 @@ const Workout = props => {
                 <p>{`Reps Completed: ${workout.reps}`}</p>
                 <p>{`Date: ${workout.date}`}</p>
                 <p>{`Region: ${workout.region}`}</p>
-
                 <button className="submit-button" onClick={editWorkout}>Edit</button>
                 <button className="delete-button" onClick={deleteWorkout}>Delete</button>
             </div>

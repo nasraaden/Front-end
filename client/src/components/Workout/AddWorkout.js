@@ -3,15 +3,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import {Link} from "react-router-dom";
 import axios from "axios"
+import jwt from "jsonwebtoken"
 
 import { connect } from "react-redux";
 import { addWorkout } from "../../actions/workoutActions";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const AddWorkout = props => {
+  const user = jwt.decode(localStorage.getItem("token"))
+  console.log("USERID", user.id)
   const [newWorkout, setNewWorkout] = useState({
-    id: Date.now(),
     name: "",
+    user_id: user.id,
     region: "",
     reps: "",
     weight: "",
