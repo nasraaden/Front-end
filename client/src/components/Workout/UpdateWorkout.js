@@ -41,7 +41,9 @@ const UpdateWorkout = (props) => {
         weight: "",
         date: ""
     });
+
 console.log(props)
+
     useEffect(() => {
         axiosWithAuth()
             .get(`/workouts/${props.match.params.id}`)
@@ -64,8 +66,8 @@ console.log(props)
         axiosWithAuth()
             .put(`/workouts/${workout.id}`, workout)
             .then(res => {
-                props.history.push("/workout")
                 setWorkout(res.data)
+                props.history.push(`/workout/${workout.id}`)
             })
     }
 
@@ -80,7 +82,6 @@ console.log(props)
                 <TextField
                     className={classes.textField}
                     label="Workout Name"
-                    // helperText="What is your exercise called?"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChanges}
@@ -141,7 +142,6 @@ console.log(props)
             <div>
                 <TextField 
                     id="date"
-                    // required="true"
                     className={classes.textField}
                     type="date"
                     margin="normal"
