@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MdCopyright } from 'react-icons/md';
 
 // images
 import mockup from '../images/mockup.png';
@@ -66,6 +67,10 @@ const Home = () => {
           <button>Try for Free</button>
         </div>
         <img src={floating} alt='floating screenshot of app' />
+      </div>
+      <div className='footer'>
+        <MdCopyright />
+        <h3>Copyright 2020</h3>
       </div>
     </div>
   );
