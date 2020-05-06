@@ -1,0 +1,65 @@
+/* MEDIA QUERIES FOR HOME PAGE */
+
+@media (max-width: 820px) {
+  .header img {
+    width: 25rem;
+    height: 18.5rem;
+  }
+
+  .header-right h3 {
+    font-size: 1.125rem;
+  }
+
+  .header-right p {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+
+  .middle .section {
+    height: 16rem;
+  }
+
+  .middle .section .text h4 {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .bottom img {
+    width: 20rem;
+  }
+
+  .bottom-left h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 645px) {
+  .header {
+    flex-direction: column-reverse;
+  }
+  .header-right {
+    margin: 3rem;
+    align-items: center;
+  }
+
+  .middle {
+    flex-direction: column;
+  }
+
+  .middle .section {
+    width: 90%;
+  }
+
+  .bottom img {
+    display: none;
+  }
+
+  .bottom-left {
+    width: 100%;
+  }
+
+  .bottom-left h2 {
+    font-size: 2.125rem;
+  }
+}
