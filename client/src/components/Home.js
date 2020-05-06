@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdCopyright } from 'react-icons/md';
 
+import NavBar from './NavBar.js';
+
 // images
 import mockup from '../images/mockup.png';
 import edit from '../images/edit.png';
@@ -12,6 +14,7 @@ import floating from '../images/floating.png';
 const Home = () => {
   return (
     <div>
+      <NavBar />
       <div className='header'>
         <img src={mockup} alt='iphone mockup of this app' />
         <div className='header-right'>
@@ -20,7 +23,9 @@ const Home = () => {
             Focus on your workout with with WeightLifting Journal. Surpass your
             limits with minimal distraction and clutter.
           </p>
-          <button>Signup</button>
+          <Link to='/signup'>
+            <button>Signup</button>
+          </Link>
         </div>
       </div>
       <div className='middle'>
@@ -57,14 +62,16 @@ const Home = () => {
       </div>
       <div className='bottom'>
         <div className='bottom-left'>
-          <h2>No distractions. Just Focus.</h2>
+          <h2>No distractions. Just focus.</h2>
           <p>
             Weightlifting Journal offers one of the fastest ways to create, log
             and track your workouts. Designed from the ground up to be a
-            distraction-free experience, the minimalist interface helps you to
+            distraction-free experience, the minimalist interface helps you
             focus on your workout.
           </p>
-          <button>Try for Free</button>
+          <Link to='/signup'>
+            <button>Try for Free</button>
+          </Link>
         </div>
         <img src={floating} alt='floating screenshot of app' />
       </div>

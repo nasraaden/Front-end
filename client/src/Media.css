@@ -16,7 +16,6 @@
   }
 
   .middle .section {
-    border: 2px solid red;
     height: 16rem;
   }
 
@@ -45,7 +44,6 @@
   }
 
   .middle {
-    border: 2px solid green;
     flex-direction: column;
   }
 
