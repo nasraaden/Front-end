@@ -6,17 +6,10 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLoggedIn } from '../actions/authActions';
-import jwt from 'jsonwebtoken';
 
 const Login = (props) => {
-  console.log(jwt.decode(localStorage.getItem('token')));
   const useStyles = makeStyles((theme) => ({
-    focused: {
-      floatingLabelFocusStyle: {
-        color: 'yellow',
-      },
-    },
-
+    focused: {},
     outlinedInput: {
       '&$focused $notchedOutline': {
         border: '2px solid #00A35E',
@@ -37,7 +30,7 @@ const Login = (props) => {
 
   const login = (e) => {
     e.preventDefault();
-    props.getLoggedIn(credentials).then(() => props.history.push('/workout'));
+    props.getLoggedIn(credentials).then(() => props.history.push('/workouts'));
   };
 
   return (
@@ -53,10 +46,11 @@ const Login = (props) => {
         <div>
           <TextField
             name='username'
-            label='Username'
+            placeholder='Username'
             margin='normal'
             variant='outlined'
             onChange={handleChanges}
+            value={credentials.username}
             className='input'
             InputProps={{
               classes: {
@@ -65,18 +59,25 @@ const Login = (props) => {
                 notchedOutline: classes.notchedOutline,
               },
             }}
-            floatingLabelFocusStyle={classes.floatingLabelFocusStyle}
           />
         </div>
         <div>
           <TextField
             name='password'
-            label='Password'
+            placeholder='Password'
             type='password'
             margin='normal'
             variant='outlined'
             onChange={handleChanges}
+            value={credentials.password}
             className='input'
+            InputProps={{
+              classes: {
+                root: classes.outlinedInput,
+                focused: classes.focused,
+                notchedOutline: classes.notchedOutline,
+              },
+            }}
           />
         </div>
         <Button type='submit' variant='contained' className='button'>
@@ -94,7 +95,9 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    isLoading: state.auth.isLoading,
+  };
 };
 
 export default connect(mapStateToProps, { getLoggedIn })(Login);

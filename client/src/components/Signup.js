@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+
+// styles
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+// state
 import { getSignedUp } from '../actions/authActions';
 import { connect } from 'react-redux';
 
-import './Auth.css';
+import './Styles/Auth.css';
 
 const Signup = (props) => {
   const [user, setUser] = useState({
@@ -26,8 +29,9 @@ const Signup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.password === user.checkPassword) {
-      props.getSignedUp({ username: user.username, password: user.password });
-      props.history.push('/workout');
+      props
+        .getSignedUp({ username: user.username, password: user.password })
+        .then(() => props.history.push('/workouts'));
       setUser({
         ...user,
         username: '',
@@ -37,12 +41,7 @@ const Signup = (props) => {
     }
   };
   const useStyles = makeStyles((theme) => ({
-    focused: {
-      floatingLabelFocusStyle: {
-        color: 'yellow',
-      },
-    },
-
+    focused: {},
     outlinedInput: {
       '&$focused $notchedOutline': {
         border: '2px solid #00A35E',
@@ -51,6 +50,10 @@ const Signup = (props) => {
     notchedOutline: {},
   }));
   const classes = useStyles(1);
+
+  // if (props.isLoading) {
+  //   return <h1>LOADING</h1>;
+  // }
 
   return (
     <div className='form-container'>
@@ -65,17 +68,11 @@ const Signup = (props) => {
         <div>
           <TextField
             id='username'
-            label='Username'
+            placeholder='Username'
             margin='normal'
             variant='outlined'
             className='input'
             onChange={handleChanges}
-            // InputLabelProps={{
-            //   classes: {
-            //     root: classes.focused,
-            //     focused: classes.focused,
-            //   },
-            // }}
             InputProps={{
               classes: {
                 root: classes.outlinedInput,
@@ -83,29 +80,42 @@ const Signup = (props) => {
                 notchedOutline: classes.notchedOutline,
               },
             }}
-            floatingLabelFocusStyle={classes.floatingLabelFocusStyle}
           />
         </div>
         <div>
           <TextField
             id='password'
-            className='input'
-            label='Password'
+            placeholder='Password'
             type='password'
             margin='normal'
             variant='outlined'
             onChange={handleChanges}
+            className='input'
+            InputProps={{
+              classes: {
+                root: classes.outlinedInput,
+                focused: classes.focused,
+                notchedOutline: classes.notchedOutline,
+              },
+            }}
           />
         </div>
         <div>
           <TextField
             id='checkPassword'
-            className='input'
-            label='Verify Password'
+            placeholder='Verify Password'
             type='password'
             margin='normal'
             variant='outlined'
             onChange={handleChanges}
+            className='input'
+            InputProps={{
+              classes: {
+                root: classes.outlinedInput,
+                focused: classes.focused,
+                notchedOutline: classes.notchedOutline,
+              },
+            }}
           />
         </div>
         <Button type='submit' variant='contained' className='button'>
@@ -123,7 +133,9 @@ const Signup = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    isLoading: state.auth.isLoading,
+  };
 };
 
 export default connect(mapStateToProps, { getSignedUp })(Signup);
