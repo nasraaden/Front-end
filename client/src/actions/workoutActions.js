@@ -38,10 +38,10 @@ export const getWorkouts = () => (dispatch) => {
 };
 
 // GET WORKOUT BY ID
-export const getWorkoutById = (workoutId) => (dispatch) => {
+export const getWorkoutById = (userId, workoutId) => (dispatch) => {
   dispatch({ type: FETCH_WORKOUT_BY_ID_START });
-  const userId = localStorage.getItem('userId');
-  return axiosWithAuth()
+  // const userId = localStorage.getItem('userId');
+  axiosWithAuth()
     .get(`users/${userId}/workouts/${workoutId}`)
     .then((res) => {
       console.log('ACTION', res.data);

@@ -1,6 +1,6 @@
 /* DASHBOARD STYLES */
 .top {
-  width: 96%;
+  width: 100%;
   background: #007343;
   padding: 1.5rem;
 }
@@ -14,12 +14,14 @@
 
 /* SIDEBAR NAV */
 .side-nav {
-  width: 20%;
-  margin-top: 2rem;
+  width: 25%;
+  padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
   /* text-align: center; */
   position: fixed;
+  height: 100vh;
+  background: #fafafa;
 }
 
 .side-nav .side-nav-link {
@@ -46,7 +48,7 @@
 /* WORKOUT LIST STYLES */
 .workout-list {
   width: 80%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
@@ -56,8 +58,12 @@
 }
 
 .workout {
+  display: flex;
   margin: 10px;
-  width: 100%;
+  width: 96%;
+  padding: 0.5rem;
   font-size: 1.5rem;
-  border: 2px solid palevioletred;
+  border: 2px solid #d1d1d1;
+  border-radius: 5px;
+  background: #fafafa;
 }

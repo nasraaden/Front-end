@@ -16,6 +16,9 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
     getWorkouts();
   }, [getWorkouts]);
 
+  if (workouts === []) {
+    return <h1>Add a workout to see your dashboard!</h1>;
+  }
   return (
     // <div>
 

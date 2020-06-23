@@ -84,10 +84,10 @@
 }
 
 .middle .section {
-  /* border: 2px solid red; */
+  text-align: center;
   display: flex;
   justify-content: center;
-  align-self: center;
+  align-items: center;
   flex-direction: column;
   height: 15rem;
   width: 27rem;
