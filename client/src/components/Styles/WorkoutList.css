@@ -2,26 +2,31 @@
 .top {
   width: 100%;
   background: #007343;
-  padding: 1.5rem;
+  padding: 1.7rem;
+  position: fixed;
 }
 .dashboard {
-  /* display: flex; */
+  /* width: 79.7%; */
+  /* margin: auto; */
+  display: flex;
   /* align-items: center; */
   /* justify-content: center; */
-  /* border: 2px solid red; */
-  position: relative;
+  border: 2px solid red;
+  /* position: relative; */
+  margin-left: 16rem;
 }
 
 /* SIDEBAR NAV */
 .side-nav {
-  width: 25%;
-  padding-top: 2.5rem;
+  width: 16rem;
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
-  /* text-align: center; */
   position: fixed;
+  z-index: 1;
   height: 100vh;
   background: #fafafa;
+  overflow-x: hidden;
 }
 
 .side-nav .side-nav-link {
@@ -47,23 +52,25 @@
 
 /* WORKOUT LIST STYLES */
 .workout-list {
-  width: 80%;
-  /* border: 2px solid red; */
+  width: 90%;
+  border: 2px solid green;
+  margin: auto;
   display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-left: 18rem;
+  /* margin-left: 18rem; */
+  margin-top: 5rem;
 }
 
 .workout {
   display: flex;
-  margin: 10px;
-  width: 96%;
+  margin: 0.5rem;
+  width: 90%;
   padding: 0.5rem;
   font-size: 1.5rem;
   border: 2px solid #d1d1d1;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   background: #fafafa;
 }
