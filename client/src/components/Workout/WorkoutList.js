@@ -1,42 +1,92 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import React, { useEffect } from 'react';
 
-import { Link } from "react-router-dom";
-import WorkoutCard from "./WorkoutCard";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+// state
+import { connect } from 'react-redux';
+import { getWorkouts } from '../../actions/workoutActions';
 
-const WorkoutList = () => {
-    const [workout, setWorkout] = useState([])
-    useEffect(() => {
-            axiosWithAuth()
-                .get('/workouts')
-                .then( res => {
-                    console.log(res)
-                    setWorkout(res.data)
-                })
-                .catch( err => {
-                    console.log("unable to grab workouts", err)
-                })
-    }, []);
+import WorkoutCard from './WorkoutCard';
 
-    return (
-        <div>
-            <h2>My Workout List</h2>
-            <div className="workoutlist">
-            {workout.map(workOut => {
-                return(
-                    <div key={workOut.id} className="workout">
-                    <WorkoutCard key={workOut.id} workout={workOut} />
-                    </div>
-                )}
-            )}
-            </div>
-            <div>
-            <Link to="/AddWorkOut"><button className="add-button"> + Add New Exercise</button></Link>
-            </div>
+// styles
+import '../Styles/Buttons.css';
+import '../Styles/WorkoutList.css';
+import SideNav from '../SideNav';
+
+import { NavLink } from 'react-router-dom';
+
+// icons
+import { IoIosFitness } from 'react-icons/io';
+import { GoPlus } from 'react-icons/go';
+import { BsPerson } from 'react-icons/bs';
+import { BsListCheck } from 'react-icons/bs';
+
+const WorkoutList = ({ workouts, getWorkouts }) => {
+  useEffect(() => {
+    getWorkouts();
+  }, [getWorkouts]);
+
+  if (workouts === []) {
+    return <h1>Add a workout to see your dashboard!</h1>;
+  }
+  return (
+    <div>
+      <div className='top' />
+      <div className='side-nav'>
+        <NavLink
+          className='side-nav-link'
+          activeClassName='side-active'
+          to='/workouts'
+        >
+          <IoIosFitness className='side-nav-icon' />
+          My Exercises
+        </NavLink>
+        <NavLink
+          className='side-nav-link'
+          activeClassName='side-active'
+          exact
+          to='/home'
+        >
+          <BsListCheck className='side-nav-icon' />
+          My Routines
+        </NavLink>
+        <NavLink
+          className='side-nav-link'
+          activeClassName='side-active'
+          to='/add-workout'
+        >
+          <GoPlus className='side-nav-icon' />
+          Add Exercise
+        </NavLink>
+        <NavLink
+          className='side-nav-link'
+          activeClassName='side-active'
+          exact
+          to='/settings'
+        >
+          <BsPerson className='side-nav-icon' />
+          Settings
+        </NavLink>
+      </div>
+      <div className='dashboard'>
+        <div className='workout-list'>
+          {/* <div className='top' /> */}
+          {workouts.map((workout) => {
+            return (
+              <div key={workout.id} className='workout'>
+                <WorkoutCard key={workout.id} workout={workout} />
+              </div>
+            );
+          })}
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default WorkoutList;
+const mapStateToProps = (state) => {
+  return {
+    fetchingWorkouts: state.workout.fetchingWorkouts,
+    workouts: state.workout.workouts,
+  };
+};
 
+export default connect(mapStateToProps, { getWorkouts })(WorkoutList);

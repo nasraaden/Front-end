@@ -4,6 +4,8 @@ import { MdCopyright } from 'react-icons/md';
 
 import NavBar from './NavBar.js';
 
+import './Styles/Home.css';
+
 // images
 import mockup from '../images/mockup.png';
 import edit from '../images/edit.png';
