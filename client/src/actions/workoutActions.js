@@ -28,7 +28,7 @@ export const getWorkouts = () => (dispatch) => {
   dispatch({ type: FETCH_WORKOUTS_START });
   const userId = localStorage.getItem('userId');
   return axiosWithAuth()
-    .get(`/users/${userId}/workouts`)
+    .get(`/${userId}/workouts`)
     .then((res) => {
       dispatch({ type: FETCH_WORKOUTS_SUCCESS, payload: res.data });
     })
@@ -38,13 +38,13 @@ export const getWorkouts = () => (dispatch) => {
 };
 
 // GET WORKOUT BY ID
-export const getWorkoutById = (workoutId) => (dispatch) => {
+export const getWorkoutById = (userId, workoutId) => (dispatch) => {
   dispatch({ type: FETCH_WORKOUT_BY_ID_START });
-  const userId = localStorage.getItem('userId');
   return axiosWithAuth()
-    .get(`users/${userId}/workouts/${workoutId}`)
+    .get(`/${userId}/workouts/${workoutId}`)
     .then((res) => {
-      dispatch({ type: FETCH_WORKOUT_BY_ID_SUCCESS, payload: res.data });
+      console.log('RES DATA', res.data);
+      dispatch({ type: FETCH_WORKOUT_BY_ID_SUCCESS, payload: res.data[0] });
     })
     .catch((err) => {
       dispatch({ type: FETCH_WORKOUT_BY_ID_FAILURE, payload: err.response });
@@ -55,7 +55,7 @@ export const getWorkoutById = (workoutId) => (dispatch) => {
 export const postWorkout = (userId, newWorkout) => (dispatch) => {
   dispatch({ type: POST_WORKOUT_START });
   return axiosWithAuth()
-    .post(`/users/${userId}/addworkout`, newWorkout)
+    .post(`/${userId}/add-workout`, newWorkout)
     .then((res) => {
       dispatch({ type: POST_WORKOUT_SUCCESS, payload: res.data });
     })
@@ -68,7 +68,7 @@ export const postWorkout = (userId, newWorkout) => (dispatch) => {
 export const editWorkout = (userId, workoutId, changes) => (dispatch) => {
   dispatch({ type: EDIT_WORKOUT_START });
   return axiosWithAuth()
-    .put(`/users/${userId}/workouts/${workoutId}`, changes)
+    .put(`/${userId}/workouts/${workoutId}`, changes)
     .then((res) => {
       dispatch({ type: EDIT_WORKOUT_SUCCESS, payload: res.data });
     })
@@ -81,7 +81,7 @@ export const editWorkout = (userId, workoutId, changes) => (dispatch) => {
 export const deleteWorkout = (userId, workoutId) => (dispatch) => {
   dispatch({ type: DELETE_WORKOUT_START });
   return axiosWithAuth()
-    .delete(`/users/${userId}/workouts/${workoutId}`)
+    .delete(`/${userId}/workouts/${workoutId}`)
     .then((res) => {
       dispatch({ type: DELETE_WORKOUT_SUCCESS, payload: res.data });
     })

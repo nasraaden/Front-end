@@ -9,7 +9,6 @@ import WorkoutCard from './WorkoutCard';
 // styles
 import '../Styles/Buttons.css';
 import '../Styles/WorkoutList.css';
-import SideNav from '../SideNav';
 
 import { NavLink } from 'react-router-dom';
 
@@ -84,8 +83,8 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
 
 const mapStateToProps = (state) => {
   return {
-    fetchingWorkouts: state.workout.fetchingWorkouts,
-    workouts: state.workout.workouts,
+    fetchingWorkouts: state.workoutState.fetchingWorkouts,
+    workouts: state.workoutState.workouts,
   };
 };
 
