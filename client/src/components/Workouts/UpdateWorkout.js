@@ -74,7 +74,7 @@ const UpdateWorkout = (props) => {
   if (!workout) {
     return <div>Loading workout information...</div>;
   }
-
+  
   return (
     <form onSubmit={submitForm} className={classes.container}>
       <h2>UPDATE WORKOUT</h2>

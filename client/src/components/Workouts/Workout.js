@@ -53,6 +53,17 @@ const Workout = (props) => {
       {props.fetchingWorkouts ? (
         <div>
           <h1>LOADING...</h1>
+=======
+            <Link to="/workout"><button className="back-button">go back</button></Link>
+            <div className="workout-container">
+                <h3>{workout.name}</h3>
+                <p>Region: {workout.region}</p>
+                <p>Reps Completed: {workout.reps}</p>
+                <p>Weight: {workout.weight}</p>
+                <p>Date: {workout.date}</p>
+                <button className="submit-button" onClick={editWorkout}>Edit</button>
+                <button className="delete-button" onClick={deleteWorkout}>Delete</button>
+            </div>
         </div>
       ) : (
         <div className='workout-container'>
@@ -81,3 +92,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { getWorkoutById })(Workout);
+
