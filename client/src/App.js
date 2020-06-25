@@ -10,10 +10,10 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 
-import WorkoutList from './components/Workout/WorkoutList';
-import Workout from './components/Workout/Workout';
-import AddWorkout from './components/Workout/AddWorkout';
-import UpdateWorkout from './components/Workout/UpdateWorkout';
+import WorkoutList from './components/Workouts/WorkoutList';
+import Workout from './components/Workouts/Workout';
+import AddWorkout from './components/Workouts/AddWorkout';
+import UpdateWorkout from './components/Workouts/UpdateWorkout';
 
 import PrivateRoute from './utils/privateRoute';
 

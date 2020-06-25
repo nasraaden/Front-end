@@ -48,6 +48,7 @@ import { Link } from 'react-router-dom';
 
 const WorkoutCard = ({ workout }) => {
   console.log('WORKOUT CARD RENDERED CORRECTLY! ');
+  console.log('WORKOUT', workout, 'NAME', workout.name);
 
   return (
     <div className='workout-card'>

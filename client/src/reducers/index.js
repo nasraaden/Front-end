@@ -5,5 +5,5 @@ import { workoutReducer } from './workoutReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
-  workout: workoutReducer,
+  workoutState: workoutReducer,
 });
