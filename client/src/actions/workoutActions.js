@@ -27,7 +27,7 @@ export const DELETE_WORKOUT_FAILURE = 'DELETE_WORKOUT_FAILURE';
 export const getWorkouts = () => (dispatch) => {
   dispatch({ type: FETCH_WORKOUTS_START });
   const userId = localStorage.getItem('userId');
-  axiosWithAuth()
+  return axiosWithAuth()
     .get(`/users/${userId}/workouts`)
     .then((res) => {
       dispatch({ type: FETCH_WORKOUTS_SUCCESS, payload: res.data });
@@ -38,13 +38,12 @@ export const getWorkouts = () => (dispatch) => {
 };
 
 // GET WORKOUT BY ID
-export const getWorkoutById = (userId, workoutId) => (dispatch) => {
+export const getWorkoutById = (workoutId) => (dispatch) => {
   dispatch({ type: FETCH_WORKOUT_BY_ID_START });
-  // const userId = localStorage.getItem('userId');
-  axiosWithAuth()
+  const userId = localStorage.getItem('userId');
+  return axiosWithAuth()
     .get(`users/${userId}/workouts/${workoutId}`)
     .then((res) => {
-      console.log('ACTION', res.data);
       dispatch({ type: FETCH_WORKOUT_BY_ID_SUCCESS, payload: res.data });
     })
     .catch((err) => {
