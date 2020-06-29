@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getWorkouts } from '../../actions/workoutActions';
 
 import WorkoutCard from './WorkoutCard';
+import SideNav from '../SideNav';
 
 // styles
 import '../Styles/Buttons.css';
@@ -16,7 +17,7 @@ import { NavLink } from 'react-router-dom';
 import { IoIosFitness } from 'react-icons/io';
 import { GoPlus } from 'react-icons/go';
 import { BsPerson } from 'react-icons/bs';
-import { BsListCheck } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
 
 const WorkoutList = ({ workouts, getWorkouts }) => {
   useEffect(() => {
@@ -30,40 +31,7 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
     <div>
       <div className='top' />
       <div className='side-nav'>
-        <NavLink
-          className='side-nav-link'
-          activeClassName='side-active'
-          to='/workouts'
-        >
-          <IoIosFitness className='side-nav-icon' />
-          My Exercises
-        </NavLink>
-        <NavLink
-          className='side-nav-link'
-          activeClassName='side-active'
-          exact
-          to='/home'
-        >
-          <BsListCheck className='side-nav-icon' />
-          My Routines
-        </NavLink>
-        <NavLink
-          className='side-nav-link'
-          activeClassName='side-active'
-          to='/add-workout'
-        >
-          <GoPlus className='side-nav-icon' />
-          Add Exercise
-        </NavLink>
-        <NavLink
-          className='side-nav-link'
-          activeClassName='side-active'
-          exact
-          to='/settings'
-        >
-          <BsPerson className='side-nav-icon' />
-          Settings
-        </NavLink>
+        <SideNav />
       </div>
       <div className='dashboard'>
         <div className='workout-list'>

@@ -14,10 +14,12 @@ import {
   DELETE_WORKOUT_START,
   DELETE_WORKOUT_SUCCESS,
   DELETE_WORKOUT_FAILURE,
+  ADD_TO_FAVES_SUCCESS,
 } from '../actions/workoutActions';
 
 const initialState = {
   workouts: [],
+  faveWorkouts: [],
   workout: {},
   fetchingWorkouts: false,
   isLoading: false,
@@ -144,6 +146,13 @@ export const workoutReducer = (state = initialState, action) => {
         isDeleting: false,
         isDeleted: false,
         error: action.payload,
+      };
+    }
+    case ADD_TO_FAVES_SUCCESS: {
+      const workoutToFave = action.payload;
+      return {
+        ...state,
+        faveWorkouts: [...state.faveWorkouts, workoutToFave],
       };
     }
     default:
