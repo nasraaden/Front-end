@@ -16,10 +16,66 @@
   margin-left: 16rem;
 }
 
+/* WORKOUT LIST STYLES */
+.workout-list {
+  width: 90%;
+  /* border: 2px solid green; */
+  margin: auto;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  /* margin-left: 18rem; */
+  margin-top: 5rem;
+}
+
+/* WORKOUT CARD STYLES */
+
+.workout {
+  /* display: flex; */
+  margin: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #d1d1d1;
+  border-radius: 0.5rem;
+  background: #fafafa;
+}
+
+.workout-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 1.3rem;
+  margin: 0.2rem;
+}
+
+.region {
+  color: #555555;
+  font-size: 1rem;
+  margin: 0.2rem;
+}
+
+/* SINGLE WORKOUT STYLES */
+.single-workout-container {
+  border: 2px solid crimson;
+  display: flex;
+  margin-left: 16rem;
+}
+.single-workout {
+  border: 2px solid green;
+  margin: 5rem auto;
+  /* margin: auto; */
+}
+
 /* SIDEBAR NAV */
 .side-nav {
   width: 16rem;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -27,6 +83,7 @@
   height: 100vh;
   background: #fafafa;
   overflow-x: hidden;
+  /* border: 2px solid yellowgreen; */
 }
 
 .side-nav .side-nav-link {
@@ -48,29 +105,4 @@
 
 .side-nav .side-nav-link .side-nav-icon {
   margin-right: 1rem;
-}
-
-/* WORKOUT LIST STYLES */
-.workout-list {
-  width: 90%;
-  border: 2px solid green;
-  margin: auto;
-  display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  /* margin-left: 18rem; */
-  margin-top: 5rem;
-}
-
-.workout {
-  display: flex;
-  margin: 0.5rem;
-  width: 90%;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  border: 2px solid #d1d1d1;
-  border-radius: 0.5rem;
-  background: #fafafa;
 }

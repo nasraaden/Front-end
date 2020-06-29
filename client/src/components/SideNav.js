@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { IoIosFitness } from 'react-icons/io';
 import { GoPlus } from 'react-icons/go';
 import { BsPerson } from 'react-icons/bs';
-import { BsListCheck } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
 
 // styles
 import './Styles/WorkoutList.css';
@@ -26,10 +26,10 @@ const SideNav = () => {
         className='side-nav-link'
         activeClassName='side-active'
         exact
-        to='/home'
+        to='/favorites'
       >
-        <BsListCheck className='side-nav-icon' />
-        My Routines
+        <FiHeart className='side-nav-icon' />
+        My Favorites
       </NavLink>
       <NavLink
         className='side-nav-link'

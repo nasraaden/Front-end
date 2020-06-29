@@ -20,7 +20,6 @@ const AddWorkout = (props) => {
 
   const [workouts, setWorkouts] = useState([]);
   useEffect(() => {
-    // const getWorkouts = () => {
     axiosWithAuth()
       .get('/workouts')
       .then((res) => {
@@ -30,9 +29,6 @@ const AddWorkout = (props) => {
       .catch((err) => {
         console.log('unable to grab workouts', err);
       });
-    // setWorkout(workouts);
-    // }
-    // getWorkouts();
   }, []);
 
   const handleChanges = (e) => {
@@ -61,7 +57,8 @@ const AddWorkout = (props) => {
       width: 400,
       height: 530,
       margin: '0px auto',
-      boxShadow: '0 5px 5px 5px rgba(90, 89, 136, 0.12)',
+      padding: '5rem 2rem',
+      border: '2px solid lightgray',
     },
     textField: {
       marginLeft: theme.spacing(1),
@@ -82,9 +79,12 @@ const AddWorkout = (props) => {
   return (
     <div>
       <div>
-        <SideNav />
-        <div className='form'>
-          <div className='top' />
+        <div>
+          <SideNav />
+        </div>
+        {/* <div className='form'> */}
+        <div className='top' />
+        <div className='fo'>
           <form className={classes.container} onSubmit={handleSubmit}>
             <h2>ADD A WORKOUT</h2>
             <div>

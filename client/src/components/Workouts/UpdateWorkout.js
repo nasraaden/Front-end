@@ -42,13 +42,13 @@ const UpdateWorkout = (props) => {
     date: '',
   });
 
-  console.log(props);
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`/workouts/${props.match.params.id}`)
+      .get(`${userId}/workouts/${props.match.params.id}`)
       .then((res) => {
-        setWorkout(res.data);
+        setWorkout(res.data[0]);
       })
       .catch((err) => console.log(err));
   }, [props.match.params.id]);
@@ -64,7 +64,7 @@ const UpdateWorkout = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/workouts/${workout.id}`, workout)
+      .put(`/${userId}/workouts/${props.match.params.id}`, workout)
       .then((res) => {
         setWorkout(res.data);
         props.history.push(`/workouts/${workout.id}`);
@@ -74,7 +74,7 @@ const UpdateWorkout = (props) => {
   if (!workout) {
     return <div>Loading workout information...</div>;
   }
-  
+
   return (
     <form onSubmit={submitForm} className={classes.container}>
       <h2>UPDATE WORKOUT</h2>

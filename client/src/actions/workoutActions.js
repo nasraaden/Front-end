@@ -21,6 +21,10 @@ export const DELETE_WORKOUT_START = 'DELETE_WORKOUT_START';
 export const DELETE_WORKOUT_SUCCESS = 'DELETE_WORKOUT_SUCCESS';
 export const DELETE_WORKOUT_FAILURE = 'DELETE_WORKOUT_FAILURE';
 
+// export const ADD_TO_FAVES_START = 'ADD_TO_FAVES_START';
+export const ADD_TO_FAVES_SUCCESS = 'ADD_TO_FAVES_SUCCESS';
+// export const ADD_TO_FAVES_FAILURE = 'ADD_TO_FAVES_FAILURE';
+
 // ACTIONS
 
 // GET ALL WORKOUTS
@@ -43,7 +47,6 @@ export const getWorkoutById = (userId, workoutId) => (dispatch) => {
   return axiosWithAuth()
     .get(`/${userId}/workouts/${workoutId}`)
     .then((res) => {
-      console.log('RES DATA', res.data);
       dispatch({ type: FETCH_WORKOUT_BY_ID_SUCCESS, payload: res.data[0] });
     })
     .catch((err) => {
@@ -88,4 +91,9 @@ export const deleteWorkout = (userId, workoutId) => (dispatch) => {
     .catch((err) => {
       dispatch({ type: DELETE_WORKOUT_FAILURE, payload: err });
     });
+};
+
+// ADD WORKOUT TO FAVES
+export const addToFaves = (workout) => (dispatch) => {
+  dispatch({ type: ADD_TO_FAVES_SUCCESS, payload: workout });
 };
