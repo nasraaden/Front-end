@@ -17,6 +17,8 @@ import FaveWorkouts from './components/Workouts/FaveWorkouts';
 
 import PrivateRoute from './utils/privateRoute';
 
+import { ThemeProvider, theme } from '@chakra-ui/core';
+
 function App() {
   // const [favesList, setFavesList] = useState([]);
 
@@ -25,18 +27,20 @@ function App() {
   // };
 
   return (
-    <div className='App'>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <PrivateRoute exact path='/workouts' component={WorkoutList} />
-        <PrivateRoute path='/workouts/:id' component={Workout} />
-        <PrivateRoute path='/update-workout/:id' component={UpdateWorkout} />
-        <PrivateRoute path='/add-workout' component={AddWorkout} />
-        <PrivateRoute path='/favorites' component={FaveWorkouts} />
-      </Switch>
-    </div>
+    <ThemeProvider>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <PrivateRoute exact path='/workouts' component={WorkoutList} />
+          <PrivateRoute path='/workouts/:id' component={Workout} />
+          <PrivateRoute path='/update-workout/:id' component={UpdateWorkout} />
+          <PrivateRoute path='/add-workout' component={AddWorkout} />
+          <PrivateRoute path='/favorites' component={FaveWorkouts} />
+        </Switch>
+      </div>
+    </ThemeProvider>
   );
 }
 

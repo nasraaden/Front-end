@@ -35,14 +35,17 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
       </div>
       <div className='dashboard'>
         <div className='workout-list'>
-          {/* <div className='top' /> */}
-          {workouts.map((workout) => {
-            return (
-              <div key={workout.id} className='workout'>
-                <WorkoutCard key={workout.id} workout={workout} />
-              </div>
-            );
-          })}
+          {workouts.length === 0 ? (
+            <h1>NOTHING HERE YET</h1>
+          ) : (
+            workouts.map((workout) => {
+              return (
+                <div key={workout.id} className='workout'>
+                  <WorkoutCard key={workout.id} workout={workout} />
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

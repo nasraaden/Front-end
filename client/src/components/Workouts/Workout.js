@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-// import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 import { connect } from 'react-redux';
 import { getWorkoutById } from '../../actions/workoutActions';
 import { addToFaves } from '../../actions/workoutActions';
 import SideNav from '../SideNav';
+
+import { useToast, Button } from '@chakra-ui/core';
 
 const Workout = ({
   workout,
@@ -16,6 +16,7 @@ const Workout = ({
   history,
 }) => {
   const userId = localStorage.getItem('userId');
+  const toast = useToast();
 
   useEffect(() => {
     getWorkoutById(userId, match.params.id);
@@ -32,6 +33,14 @@ const Workout = ({
 
   const fave = () => {
     addToFaves(workout);
+    toast({
+      title: 'Success!',
+      description: 'This workout has been added to your favorites.',
+      status: 'success',
+      duration: 1500,
+      isClosable: true,
+      position: 'top-right',
+    });
   };
 
   console.log(faveWorkouts);

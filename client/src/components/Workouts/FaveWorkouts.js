@@ -6,17 +6,7 @@ import WorkoutCard from './WorkoutCard';
 import { connect } from 'react-redux';
 
 const FaveWorkouts = ({ faveWorkouts }) => {
-  useEffect(() => {
-    localStorage.setItem('faveWorkouts', JSON.stringify(faveWorkouts));
-  }, []);
-
-  const retrievedData = localStorage.getItem('faveWorkouts');
-
-  const data = JSON.parse(retrievedData);
-
-  console.log('DATA', data);
-
-  console.log(faveWorkouts);
+  console.log(faveWorkouts.length);
   return (
     <div>
       <div className='top' />
@@ -25,13 +15,17 @@ const FaveWorkouts = ({ faveWorkouts }) => {
       </div>
       <div className='dashboard'>
         <div className='workout-list'>
-          {faveWorkouts.map((workout) => {
-            return (
-              <div key={workout.id} className='workout'>
-                <WorkoutCard key={workout.id} workout={workout} />
-              </div>
-            );
-          })}
+          {faveWorkouts.length === 0 ? (
+            <h1>NOTHING HERE YET</h1>
+          ) : (
+            faveWorkouts.map((workout) => {
+              return (
+                <div key={workout.id} className='workout'>
+                  <WorkoutCard key={workout.id} workout={workout} />
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

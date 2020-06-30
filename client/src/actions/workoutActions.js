@@ -21,9 +21,7 @@ export const DELETE_WORKOUT_START = 'DELETE_WORKOUT_START';
 export const DELETE_WORKOUT_SUCCESS = 'DELETE_WORKOUT_SUCCESS';
 export const DELETE_WORKOUT_FAILURE = 'DELETE_WORKOUT_FAILURE';
 
-// export const ADD_TO_FAVES_START = 'ADD_TO_FAVES_START';
 export const ADD_TO_FAVES_SUCCESS = 'ADD_TO_FAVES_SUCCESS';
-// export const ADD_TO_FAVES_FAILURE = 'ADD_TO_FAVES_FAILURE';
 
 // ACTIONS
 
@@ -94,6 +92,7 @@ export const deleteWorkout = (userId, workoutId) => (dispatch) => {
 };
 
 // ADD WORKOUT TO FAVES
-export const addToFaves = (workout) => (dispatch) => {
-  dispatch({ type: ADD_TO_FAVES_SUCCESS, payload: workout });
-};
+export const addToFaves = (workout) => ({
+  type: ADD_TO_FAVES_SUCCESS,
+  payload: workout,
+});
