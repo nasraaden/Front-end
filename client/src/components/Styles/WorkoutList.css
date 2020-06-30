@@ -1,13 +1,8 @@
 /* DASHBOARD STYLES */
 .top {
-  width: 100%;
   background: #007343;
   padding: 1.7rem;
   position: fixed;
-}
-
-.top-mobile {
-  display: none;
 }
 
 .dashboard {
@@ -163,8 +158,8 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 1;
   height: 100vh;
+  z-index: 1;
   background: #fafafa;
   overflow-x: hidden;
   /* border: 2px solid yellowgreen; */
@@ -176,7 +171,7 @@
   align-items: center;
   font-weight: bold;
   padding: 1rem;
-  margin: 1rem;
+  margin: 2rem 1rem 1rem 1rem;
   border-radius: 0.5rem;
   color: #555555;
   text-decoration: none;
@@ -189,6 +184,10 @@
 
 .side-nav .side-nav-link .side-nav-icon {
   margin-right: 1rem;
+}
+
+.side-nav-mobile {
+  display: none;
 }
 
 @media (max-width: 890px) {
@@ -205,17 +204,42 @@
   }
 }
 
+@media (min-width: 501px) {
+  .top {
+    width: 100%;
+  }
+}
+
 @media (max-width: 500px) {
   .dashboard {
     margin-left: 0;
+    border: 2px solid red;
+    width: 100%;
   }
   .single-workout-container {
     margin-left: 0;
+    padding: 1rem;
   }
   .side-nav {
     display: none;
   }
-  .top-mobile {
+  .side-nav-mobile {
     display: block;
+    float: right;
+    position: absolute;
+    z-index: 1;
+    text-align: right;
+    margin-left: 89%;
+  }
+  .top {
+    position: relative;
+    width: none;
+  }
+  .side-nav-mobile .side-nav-mobile-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0.1rem;
+    text-align: right;
+    border: 2px solid red;
   }
 }

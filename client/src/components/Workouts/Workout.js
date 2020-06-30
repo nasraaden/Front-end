@@ -39,11 +39,10 @@ const Workout = ({
 
   return (
     <div>
-      <div className='top' />
-      <div className='top-mobile'></div>
-      <div className='side-nav'>
+      <div>
         <SideNav />
       </div>
+      <div className='top' />
       <div className='single-workout-container'>
         <div className='single-workout'>
           <div className='workout-top'>

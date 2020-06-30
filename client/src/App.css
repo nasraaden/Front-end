@@ -106,6 +106,7 @@ section {
 }
 body {
   line-height: 1;
+  box-sizing: border-box;
 }
 ol,
 ul {
@@ -129,4 +130,5 @@ table {
 
 .App {
   font-family: Roboto;
+  padding: 0;
 }

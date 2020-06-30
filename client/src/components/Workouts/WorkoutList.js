@@ -26,10 +26,10 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
 
   return (
     <div>
-      <div className='top' />
-      <div className='side-nav'>
+      <div>
         <SideNav />
       </div>
+      <div className='top' />
       <div className='dashboard'>
         <div className='workout-list'>
           {workouts.length === 0 ? (

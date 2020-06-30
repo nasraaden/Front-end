@@ -11,10 +11,10 @@ const FaveWorkouts = ({ faveWorkouts }) => {
   console.log('whole thing', faveWorkouts);
   return (
     <div>
-      <div className='top' />
-      <div className='side-nav'>
+      <div>
         <SideNav />
       </div>
+      <div className='top' />
       <div className='dashboard'>
         <div className='workout-list'>
           {faveWorkouts.length === 0 ? (

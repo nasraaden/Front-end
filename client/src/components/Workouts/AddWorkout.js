@@ -100,7 +100,6 @@ const AddWorkout = (props) => {
     },
     div: {
       marginBottom: theme.spacing(4),
-      marginLeft: theme.spacing(1),
       marginTop: theme.spacing(1),
     },
   }));
