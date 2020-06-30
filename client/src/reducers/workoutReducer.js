@@ -28,6 +28,7 @@ const initialState = {
   isAdded: false,
   isEdited: false,
   isDeleted: false,
+  faveAdded: false,
   error: '',
 };
 
@@ -153,6 +154,7 @@ export const workoutReducer = (state = initialState, action) => {
       return {
         ...state,
         faveWorkouts: [...state.faveWorkouts, workoutToFave],
+        faveAdded: true,
       };
     }
     default:

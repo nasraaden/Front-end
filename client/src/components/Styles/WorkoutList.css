@@ -62,9 +62,11 @@
 
 /* SINGLE WORKOUT STYLES */
 .single-workout-container {
-  /* border: 2px solid crimson; */
+  /* border: 2px solid yellowgreen; */
   display: flex;
   margin-left: 16rem;
+  font-size: 1.2rem;
+  padding: 2rem;
 }
 .single-workout {
   /* border: 2px solid green; */
@@ -73,9 +75,82 @@
 }
 
 .heart-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 1.2rem;
+  height: 1.2rem;
   color: crimson;
+}
+/* SINGLE WORKOUT TOP */
+.workout-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid red; */
+  margin-bottom: 1rem;
+}
+
+.workout-top h3 {
+  font-size: 2rem;
+  margin-bottom: 0.7rem;
+  /* font-weight: bold; */
+  text-transform: uppercase;
+}
+
+.workout-top .top-p {
+  margin-bottom: 0.7rem;
+}
+
+.reps-weight {
+  display: flex;
+  /* border: 2px solid green; */
+}
+
+.reps-weight p {
+  margin: 0.7rem 2rem;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid blue; */
+  text-transform: uppercase;
+}
+
+/* SINGLE WORKOUT MIDDLE */
+.workout-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid pink; */
+  margin-bottom: 0.7rem;
+}
+
+.edit-del-fave {
+  display: flex;
+  /* border: 2px solid pink; */
+  justify-content: space-evenly;
+}
+
+.edit-del-fave p {
+  cursor: pointer;
+  margin: 0.3rem;
+}
+
+.edit-del-fave p:hover {
+  text-decoration: underline;
+}
+
+/* SINGLE WORKOUT BOTTOM */
+.workout-bottom {
+  text-align: center;
+}
+
+.workout-bottom p {
+  margin: 0.5rem;
+}
+
+.workout-bottom .desc {
+  font-size: 1.5rem;
+}
+.workout-bottom .text {
+  line-height: 1.5rem;
 }
 /* SIDEBAR NAV */
 .side-nav {

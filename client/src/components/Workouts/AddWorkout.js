@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 // import { Link } from 'react-router-dom';
 // import axios from 'axios';
 // import jwt from 'jsonwebtoken';
@@ -16,6 +17,7 @@ const AddWorkout = (props) => {
     reps: '',
     weight: '',
     date: '',
+    description: '',
   });
 
   const [workouts, setWorkouts] = useState([]);
@@ -48,30 +50,44 @@ const AddWorkout = (props) => {
   };
 
   const useStyles = makeStyles((theme) => ({
+    focused: {},
+    outlinedInput: {
+      '&$focused $notchedOutline': {
+        border: '2px solid #00A35E',
+      },
+    },
+    notchedOutline: {},
     container: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
       alignItems: 'center',
-      background: 'white',
-      width: 400,
-      height: 530,
-      margin: '0px auto',
-      padding: '5rem 2rem',
-      border: '2px solid lightgray',
+      marginLeft: '16rem',
     },
     textField: {
+      width: '35rem',
+    },
+    textArea: {
+      marginTop: theme.spacing(2),
+      minWidth: '33rem',
+      maxWidth: '34.6rem',
+      minHeight: '10rem',
+      borderRadius: '.2rem',
+      border: '1px solid lightgray',
+      fontSize: '1rem',
+      padding: theme.spacing(2),
+      lineHeight: '1.3rem',
+    },
+    insideForm: {
+      marginTop: '5rem',
+    },
+    h2: {
+      textAlign: 'center',
+      marginBottom: '1.5rem',
+    },
+    div: {
+      marginBottom: theme.spacing(4),
       marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 300,
-      border: 'green',
-    },
-    button: {
-      margin: theme.spacing(1),
-      width: 300,
-    },
-    input: {
-      display: 'none',
+      marginTop: theme.spacing(1),
     },
   }));
   const classes = useStyles(1);
@@ -79,70 +95,91 @@ const AddWorkout = (props) => {
   return (
     <div>
       <div>
-        <div>
-          <SideNav />
-        </div>
-        {/* <div className='form'> */}
-        <div className='top' />
-        <div className='fo'>
-          <form className={classes.container} onSubmit={handleSubmit}>
-            <h2>ADD A WORKOUT</h2>
-            <div>
+        <SideNav />
+      </div>
+      <div className='top' />
+      <div className='form'>
+        <form className={classes.container} onSubmit={handleSubmit}>
+          <div className={classes.insideForm}>
+            <h2 className={classes.h2}>ADD AN EXERCISE</h2>
+            <div className={classes.div}>
+              <p className={classes.p}>Exercise Name</p>
               <TextField
                 id='name'
                 // required="true"
                 className={classes.textField}
-                label='Workout Name'
+                placeholder='e.g. Bicep Curls'
                 margin='normal'
                 variant='outlined'
                 name='name'
                 onChange={handleChanges}
                 value={newWorkout.name}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
               />
             </div>
-            <div>
+            <div className={classes.div}>
+              <p className={classes.p}>Exercise Region</p>
               <TextField
                 id='region'
                 // required="true"
                 className={classes.textField}
-                label='Muscle Region'
+                placeholder='e.g. Biceps'
                 margin='normal'
                 variant='outlined'
                 name='region'
                 onChange={handleChanges}
                 value={newWorkout.region}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
               />
             </div>
-            <div>
+            <div className={classes.div}>
+              <p className={classes.p}>Amount of Reps</p>
               <TextField
                 id='reps'
                 // required="true"
                 className={classes.textField}
-                label='Reps'
+                placeholder='Reps'
                 margin='normal'
                 variant='outlined'
                 name='reps'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
-                // onInput={newWorkout.reps=Math.round(newWorkout.reps)}
                 onChange={handleChanges}
                 value={newWorkout.reps}
               />
             </div>
-            <div>
+            <div className={classes.div}>
+              <p className={classes.p}>Amount of Sets</p>
               <TextField
                 id='weight'
                 className={classes.textField}
-                label='lbs'
+                placeholder='Sets'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
-                // onInput={newWorkout.weight=parseInt(newWorkout.weight, 10)}
                 margin='normal'
                 variant='outlined'
                 onChange={handleChanges}
@@ -150,10 +187,10 @@ const AddWorkout = (props) => {
                 value={newWorkout.weight}
               />
             </div>
-            <div>
+            <div className={classes.div}>
+              <p className={classes.p}>Date</p>
               <TextField
                 id='date'
-                // required="true"
                 className={classes.textField}
                 margin='normal'
                 variant='outlined'
@@ -161,11 +198,40 @@ const AddWorkout = (props) => {
                 name='date'
                 onChange={handleChanges}
                 value={newWorkout.date}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
               />
             </div>
-            <button className='submit-button'>Add</button>
-          </form>
-        </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Description</p>
+              <TextareaAutosize
+                id='description'
+                className={classes.textArea}
+                placeholder='Add a helpful description to your exercise!'
+                margin='normal'
+                variant='outlined'
+                name='description'
+                onChange={handleChanges}
+                value={newWorkout.description}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
+              />
+            </div>
+            <div className={classes.div}>
+              <button className='add-save-button'>Add</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

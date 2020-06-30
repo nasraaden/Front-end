@@ -1,35 +1,51 @@
 import React, { useState, useEffect } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-// import axios from 'axios';
-// import { Link } from 'react-router-dom';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import SideNav from '../SideNav';
 
 const UpdateWorkout = (props) => {
   const useStyles = makeStyles((theme) => ({
+    outlinedInput: {
+      '&$focused $notchedOutline': {
+        border: '2px solid #00A35E',
+      },
+    },
+    notchedOutline: {},
     container: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
       alignItems: 'center',
-      background: 'white',
-      width: 400,
-      height: 530,
-      margin: '40px auto',
-      boxShadow: '0 5px 5px 5px rgba(90, 89, 136, 0.12)',
+      marginLeft: '16rem',
     },
     textField: {
+      width: '35rem',
+    },
+    textArea: {
+      marginTop: theme.spacing(2),
+      minWidth: '33rem',
+      maxWidth: '34.6rem',
+      minHeight: '10rem',
+      borderRadius: '.2rem',
+      border: '1px solid lightgray',
+      fontSize: '1rem',
+      padding: theme.spacing(2),
+      lineHeight: '1.3rem',
+    },
+    insideForm: {
+      marginTop: '5rem',
+    },
+    h2: {
+      textAlign: 'center',
+      marginBottom: '1.5rem',
+    },
+    div: {
+      marginBottom: theme.spacing(4),
       marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 300,
-      border: 'green',
-    },
-    button: {
-      margin: theme.spacing(1),
-      width: 300,
-    },
-    input: {
-      display: 'none',
+      marginTop: theme.spacing(1),
     },
   }));
   const classes = useStyles(1);
@@ -71,86 +87,117 @@ const UpdateWorkout = (props) => {
       });
   };
 
-  if (!workout) {
-    return <div>Loading workout information...</div>;
-  }
-
   return (
-    <form onSubmit={submitForm} className={classes.container}>
-      <h2>UPDATE WORKOUT</h2>
+    <div>
       <div>
-        <TextField
-          className={classes.textField}
-          label='Workout Name'
-          margin='normal'
-          variant='outlined'
-          onChange={handleChanges}
-          name='name'
-          value={workout.name}
-        />
+        <SideNav />
       </div>
-      <div>
-        <TextField
-          id='region'
-          className={classes.textField}
-          label='Muscle Region'
-          margin='normal'
-          variant='outlined'
-          onChange={handleChanges}
-          name='region'
-          value={workout.region}
-        />
+      <div className='top' />
+      <div className='form'>
+        <form className={classes.container} onSubmit={submitForm}>
+          <div className={classes.insideForm}>
+            <h2 className={classes.h2}>UPDATE EXERCISE</h2>
+            <div className={classes.div}>
+              <p className={classes.p}>Exercise Name</p>
+              <TextField
+                className={classes.textField}
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='name'
+                value={workout.name}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Exercise Region</p>
+              <TextField
+                id='region'
+                className={classes.textField}
+                label='Muscle Region'
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='region'
+                value={workout.region}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Amount of Reps</p>
+              <TextField
+                id='reps'
+                className={classes.textField}
+                label='Reps'
+                type='number'
+                inputProps={{
+                  min: '0',
+                  step: '1',
+                }}
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='reps'
+                value={workout.reps}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Amount of Sets</p>
+              <TextField
+                id='weight'
+                className={classes.textField}
+                label='lbs'
+                type='number'
+                inputProps={{
+                  min: '0',
+                  step: '1',
+                }}
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='weight'
+                value={workout.weight}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Date</p>
+              <TextField
+                id='date'
+                className={classes.textField}
+                type='date'
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='date'
+                value={workout.date}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Description</p>
+              <TextareaAutosize
+                id='description'
+                className={classes.textArea}
+                margin='normal'
+                variant='outlined'
+                name='description'
+                onChange={handleChanges}
+                value={workout.description}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
+              />
+            </div>
+            <div className={classes.div}>
+              <button className='add-save-button' onClick={submitForm}>
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div>
-        <TextField
-          id='reps'
-          className={classes.textField}
-          label='Reps'
-          type='number'
-          inputProps={{
-            min: '0',
-            step: '1',
-          }}
-          margin='normal'
-          variant='outlined'
-          onChange={handleChanges}
-          name='reps'
-          value={workout.reps}
-        />
-      </div>
-      <div>
-        <TextField
-          id='weight'
-          className={classes.textField}
-          label='lbs'
-          type='number'
-          inputProps={{
-            min: '0',
-            step: '1',
-          }}
-          margin='normal'
-          variant='outlined'
-          onChange={handleChanges}
-          name='weight'
-          value={workout.weight}
-        />
-      </div>
-      <div>
-        <TextField
-          id='date'
-          className={classes.textField}
-          type='date'
-          margin='normal'
-          variant='outlined'
-          onChange={handleChanges}
-          name='date'
-          value={workout.date}
-        />
-      </div>
-      <button className='submit-button' onClick={submitForm}>
-        Save
-      </button>
-    </form>
+    </div>
   );
 };
 

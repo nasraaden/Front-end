@@ -39,7 +39,7 @@ const SideNav = () => {
         <GoPlus className='side-nav-icon' />
         Add Exercise
       </NavLink>
-      <NavLink
+      {/* <NavLink
         className='side-nav-link'
         activeClassName='side-active'
         exact
@@ -47,7 +47,7 @@ const SideNav = () => {
       >
         <BsPerson className='side-nav-icon' />
         Settings
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 };
