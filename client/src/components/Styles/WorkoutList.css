@@ -5,6 +5,11 @@
   padding: 1.7rem;
   position: fixed;
 }
+
+.top-mobile {
+  display: none;
+}
+
 .dashboard {
   /* width: 79.7%; */
   /* margin: auto; */
@@ -62,7 +67,6 @@
 
 /* SINGLE WORKOUT STYLES */
 .single-workout-container {
-  /* border: 2px solid yellowgreen; */
   display: flex;
   margin-left: 16rem;
   font-size: 1.2rem;
@@ -173,7 +177,7 @@
   font-weight: bold;
   padding: 1rem;
   margin: 1rem;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   color: #555555;
   text-decoration: none;
 }
@@ -185,4 +189,33 @@
 
 .side-nav .side-nav-link .side-nav-icon {
   margin-right: 1rem;
+}
+
+@media (max-width: 890px) {
+  .dashboard {
+    margin-left: 12rem;
+  }
+  .single-workout-container {
+    margin-left: 12rem;
+    padding: 0rem;
+    font-size: 1rem;
+  }
+  .side-nav {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard {
+    margin-left: 0;
+  }
+  .single-workout-container {
+    margin-left: 0;
+  }
+  .side-nav {
+    display: none;
+  }
+  .top-mobile {
+    display: block;
+  }
 }

@@ -40,6 +40,7 @@ const Workout = ({
   return (
     <div>
       <div className='top' />
+      <div className='top-mobile'></div>
       <div className='side-nav'>
         <SideNav />
       </div>

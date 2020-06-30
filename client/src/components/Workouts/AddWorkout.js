@@ -62,20 +62,34 @@ const AddWorkout = (props) => {
       flexDirection: 'column',
       alignItems: 'center',
       marginLeft: '16rem',
+      border: '2px solid red',
+      '@media (max-width: 890px)': {
+        marginLeft: '12em',
+      },
+      '@media (max-width: 500px)': {
+        marginLeft: '0em',
+      },
     },
     textField: {
       width: '35rem',
+      '@media (max-width: 890px)': {
+        width: '25rem',
+      },
     },
     textArea: {
       marginTop: theme.spacing(2),
       minWidth: '33rem',
-      maxWidth: '34.6rem',
+      maxWidth: '33rem',
       minHeight: '10rem',
       borderRadius: '.2rem',
       border: '1px solid lightgray',
       fontSize: '1rem',
       padding: theme.spacing(2),
       lineHeight: '1.3rem',
+      '@media (max-width: 890px)': {
+        minWidth: '23rem',
+        maxWidth: '23rem',
+      },
     },
     insideForm: {
       marginTop: '5rem',
@@ -106,7 +120,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Exercise Name</p>
               <TextField
                 id='name'
-                // required="true"
+                required='true'
                 className={classes.textField}
                 placeholder='e.g. Bicep Curls'
                 margin='normal'
@@ -127,7 +141,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Exercise Region</p>
               <TextField
                 id='region'
-                // required="true"
+                required='true'
                 className={classes.textField}
                 placeholder='e.g. Biceps'
                 margin='normal'
@@ -148,7 +162,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Amount of Reps</p>
               <TextField
                 id='reps'
-                // required="true"
+                required='true'
                 className={classes.textField}
                 placeholder='Reps'
                 margin='normal'
@@ -170,6 +184,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Amount of Sets</p>
               <TextField
                 id='weight'
+                required='true'
                 className={classes.textField}
                 placeholder='Sets'
                 type='number'
@@ -191,6 +206,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Date</p>
               <TextField
                 id='date'
+                required='true'
                 className={classes.textField}
                 margin='normal'
                 variant='outlined'
@@ -211,6 +227,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Description</p>
               <TextareaAutosize
                 id='description'
+                required='true'
                 className={classes.textArea}
                 placeholder='Add a helpful description to your exercise!'
                 margin='normal'

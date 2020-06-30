@@ -20,9 +20,18 @@ const UpdateWorkout = (props) => {
       flexDirection: 'column',
       alignItems: 'center',
       marginLeft: '16rem',
+      '@media (max-width: 890px)': {
+        marginLeft: '12em',
+      },
+      '@media (max-width: 500px)': {
+        marginLeft: '0em',
+      },
     },
     textField: {
       width: '35rem',
+      '@media (max-width: 890px)': {
+        width: '25rem',
+      },
     },
     textArea: {
       marginTop: theme.spacing(2),
@@ -34,6 +43,10 @@ const UpdateWorkout = (props) => {
       fontSize: '1rem',
       padding: theme.spacing(2),
       lineHeight: '1.3rem',
+      '@media (max-width: 890px)': {
+        minWidth: '23rem',
+        maxWidth: '23rem',
+      },
     },
     insideForm: {
       marginTop: '5rem',
