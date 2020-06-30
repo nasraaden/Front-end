@@ -7,6 +7,8 @@ import SideNav from '../SideNav';
 
 import { useToast, Button } from '@chakra-ui/core';
 
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
+
 const Workout = ({
   workout,
   getWorkoutById,
@@ -31,17 +33,7 @@ const Workout = ({
     e.preventDefault();
   };
 
-  const fave = () => {
-    addToFaves(workout);
-    toast({
-      title: 'Success!',
-      description: 'This workout has been added to your favorites.',
-      status: 'success',
-      duration: 1500,
-      isClosable: true,
-      position: 'top-right',
-    });
-  };
+  const fave = () => {};
 
   console.log(faveWorkouts);
 
@@ -64,7 +56,39 @@ const Workout = ({
           <button className='delete-button' onClick={deleteWorkout}>
             Delete
           </button>
-          <button onClick={fave}>Fave</button>
+          <div>
+            {faveWorkouts.includes(workout) ? (
+              <BsHeartFill
+                className='heart-icon'
+                onClick={() =>
+                  toast({
+                    title: 'Wait a minute!',
+                    description: 'This workout is already in your favorites.',
+                    status: 'info',
+                    duration: 1500,
+                    isClosable: true,
+                    position: 'top-right',
+                  })
+                }
+              />
+            ) : (
+              <BsHeart
+                className='heart-icon'
+                onClick={() => (
+                  addToFaves(workout),
+                  toast({
+                    title: 'Success!',
+                    description:
+                      'This workout has been added to your favorites.',
+                    status: 'success',
+                    duration: 1500,
+                    isClosable: true,
+                    position: 'top-right',
+                  })
+                )}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

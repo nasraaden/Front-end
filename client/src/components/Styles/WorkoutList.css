@@ -72,6 +72,11 @@
   /* margin: auto; */
 }
 
+.heart-icon {
+  width: 2rem;
+  height: 2rem;
+  color: crimson;
+}
 /* SIDEBAR NAV */
 .side-nav {
   width: 16rem;

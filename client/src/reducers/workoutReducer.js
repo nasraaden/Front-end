@@ -17,7 +17,7 @@ import {
   ADD_TO_FAVES_SUCCESS,
 } from '../actions/workoutActions';
 
-export const initialState = {
+const initialState = {
   workouts: [],
   faveWorkouts: [],
   workout: {},
