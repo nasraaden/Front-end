@@ -11,7 +11,7 @@
   display: flex;
   /* align-items: center; */
   /* justify-content: center; */
-  border: 2px solid crimson;
+  /* border: 2px solid crimson; */
   /* position: relative; */
   margin-left: 16rem;
 }
@@ -62,16 +62,21 @@
 
 /* SINGLE WORKOUT STYLES */
 .single-workout-container {
-  border: 2px solid crimson;
+  /* border: 2px solid crimson; */
   display: flex;
   margin-left: 16rem;
 }
 .single-workout {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   margin: 5rem auto;
   /* margin: auto; */
 }
 
+.heart-icon {
+  width: 2rem;
+  height: 2rem;
+  color: crimson;
+}
 /* SIDEBAR NAV */
 .side-nav {
   width: 16rem;
