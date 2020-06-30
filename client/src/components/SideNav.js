@@ -6,9 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { IoIosFitness } from 'react-icons/io';
 import { GoPlus } from 'react-icons/go';
 import { FiHeart } from 'react-icons/fi';
-import { RiMenu4Line } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
-import { GrMenu } from 'react-icons/gr';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 import {
   useDisclosure,
@@ -53,19 +52,19 @@ const SideNav = () => {
         </NavLink>
       </div>
       <div className='side-nav-mobile'>
-        <GrMenu className='side-nav-mobile-icon' onClick={onOpen} />
+        <AiOutlineMenu className='nav-open' onClick={onOpen} />
         <Drawer isOpen={isOpen} onClose={onClose} placement='right'>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerBody className='drawer-bodys'>
               <IoMdClose className='nav-close' onClick={onClose} />
-              <NavLink className='side-nav-link' to='/workouts'>
+              <NavLink className='drawer-link' to='/workouts'>
                 My Exercises
               </NavLink>
-              <NavLink className='side-nav-link' exact to='/favorites'>
+              <NavLink className='drawer-link' exact to='/favorites'>
                 My Favorites
               </NavLink>
-              <NavLink className='side-nav-link' to='/add-workout'>
+              <NavLink className='drawer-link' to='/add-workout'>
                 Add Exercise
               </NavLink>
             </DrawerBody>

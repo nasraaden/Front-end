@@ -190,6 +190,33 @@
   display: none;
 }
 
+/* DRAWER STYLES */
+.side-nav-mobile .nav-open {
+  width: 3rem;
+  height: 3rem;
+  margin-top: 0.1rem;
+  color: whitesmoke;
+}
+
+.drawer-link {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  text-decoration: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.drawer-link:hover {
+  text-decoration: underline;
+}
+
+.nav-close {
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
 @media (max-width: 890px) {
   .dashboard {
     margin-left: 12rem;
@@ -229,17 +256,10 @@
     position: absolute;
     z-index: 1;
     text-align: right;
-    margin-left: 89%;
+    margin-left: 88%;
   }
   .top {
     position: relative;
     width: none;
-  }
-  .side-nav-mobile .side-nav-mobile-icon {
-    width: 3rem;
-    height: 3rem;
-    margin-top: 0.1rem;
-    text-align: right;
-    border: 2px solid red;
   }
 }
