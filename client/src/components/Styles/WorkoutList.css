@@ -136,14 +136,13 @@
 /* SIDEBAR NAV */
 .side-nav {
   width: 16rem;
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
   position: fixed;
   height: 100vh;
   z-index: 1;
   background: #fafafa;
-  overflow-x: hidden;
 }
 
 .side-nav .side-nav-link {
@@ -151,7 +150,7 @@
   align-items: center;
   font-weight: bold;
   padding: 1rem;
-  margin: 2rem 1rem 1rem 1rem;
+  margin: 1rem;
   border-radius: 0.5rem;
   color: #555555;
   text-decoration: none;

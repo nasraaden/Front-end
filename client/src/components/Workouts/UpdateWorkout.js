@@ -4,10 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+
+import { getWorkoutById, editWorkout } from '../../actions/workoutActions';
 import SideNav from '../SideNav';
 
-const UpdateWorkout = (props) => {
+const UpdateWorkout = ({ getWorkoutById, editWorkout, match, history }) => {
   const useStyles = makeStyles((theme) => ({
     outlinedInput: {
       '&$focused $notchedOutline': {
@@ -73,13 +75,8 @@ const UpdateWorkout = (props) => {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    axiosWithAuth()
-      .get(`${userId}/workouts/${props.match.params.id}`)
-      .then((res) => {
-        setWorkout(res.data[0]);
-      })
-      .catch((err) => console.log(err));
-  }, [props.match.params.id]);
+    getWorkoutById(userId, match.params.id);
+  }, [match.params.id]);
 
   const handleChanges = (e) => {
     e.preventDefault();
@@ -91,12 +88,9 @@ const UpdateWorkout = (props) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .put(`/${userId}/workouts/${props.match.params.id}`, workout)
-      .then((res) => {
-        setWorkout(res.data);
-        props.history.push(`/workouts/${workout.id}`);
-      });
+    editWorkout(userId, workout.id, workout).then((res) => {
+      history.push(`/workouts/${workout.id}`);
+    });
   };
 
   return (
@@ -213,4 +207,12 @@ const UpdateWorkout = (props) => {
   );
 };
 
-export default UpdateWorkout;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+
+export default connect(mapStateToProps, { getWorkoutById, editWorkout })(
+  UpdateWorkout
+);
