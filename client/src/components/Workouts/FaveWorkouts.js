@@ -18,7 +18,7 @@ const FaveWorkouts = ({ faveWorkouts }) => {
       <div className='dashboard'>
         <div className='workout-list'>
           {faveWorkouts.length === 0 ? (
-            <h1 style={{ fontSize: '1.5rem' }}>
+            <h1 style={{ fontSize: '1.2rem' }}>
               You don't have any exercises in your favorites. Go to{' '}
               <Link to='/workouts' style={{ color: 'black' }}>
                 My Exercises

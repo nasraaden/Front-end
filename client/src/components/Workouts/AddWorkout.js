@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
-// import jwt from 'jsonwebtoken';
 
-// import { addWorkout } from "../../actions/workoutActions";
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { postWorkout } from '../../actions/workoutActions';
+
 import SideNav from '../SideNav';
 
-const AddWorkout = (props) => {
+const AddWorkout = ({ postWorkout, history }) => {
   const [newWorkout, setNewWorkout] = useState({
     name: '',
     region: '',
@@ -20,18 +18,7 @@ const AddWorkout = (props) => {
     description: '',
   });
 
-  const [workouts, setWorkouts] = useState([]);
-  useEffect(() => {
-    axiosWithAuth()
-      .get('/workouts')
-      .then((res) => {
-        console.log(res);
-        setWorkouts(res.data);
-      })
-      .catch((err) => {
-        console.log('unable to grab workouts', err);
-      });
-  }, []);
+  const userId = localStorage.getItem('userId');
 
   const handleChanges = (e) => {
     e.preventDefault();
@@ -40,13 +27,7 @@ const AddWorkout = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .post('/workouts', newWorkout)
-      .then((res) => {
-        setWorkouts({ ...workouts, newWorkout });
-      })
-      .catch((err) => console.log(err.response));
-    props.history.push('/workouts');
+    postWorkout(userId, newWorkout).then(() => history.push('/workouts'));
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -253,8 +234,8 @@ const AddWorkout = (props) => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return state;
-// };
+const mapStateToProps = (state) => {
+  return state;
+};
 
-export default AddWorkout;
+export default connect(mapStateToProps, { postWorkout })(AddWorkout);
