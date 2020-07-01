@@ -11,14 +11,6 @@ import SideNav from '../SideNav';
 import '../Styles/Buttons.css';
 import '../Styles/WorkoutList.css';
 
-import { NavLink } from 'react-router-dom';
-
-// icons
-import { IoIosFitness } from 'react-icons/io';
-import { GoPlus } from 'react-icons/go';
-import { BsPerson } from 'react-icons/bs';
-import { FiHeart } from 'react-icons/fi';
-
 const WorkoutList = ({ workouts, getWorkouts }) => {
   useEffect(() => {
     getWorkouts();

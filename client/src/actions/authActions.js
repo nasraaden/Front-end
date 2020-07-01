@@ -15,7 +15,6 @@ export const getLoggedIn = (creds) => (dispatch) => {
     .then((res) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userId', res.data.id);
-      console.log(res.data);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -31,7 +30,6 @@ export const getSignedUp = (user) => (dispatch) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userId', res.data.id);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
-      console.log(res);
     })
     .catch((err) => {
       dispatch({ type: SIGNUP_FAIL, payload: err.response });

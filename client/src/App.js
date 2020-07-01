@@ -17,15 +17,9 @@ import FaveWorkouts from './components/Workouts/FaveWorkouts';
 
 import PrivateRoute from './utils/privateRoute';
 
-import { ThemeProvider, theme } from '@chakra-ui/core';
+import { ThemeProvider } from '@chakra-ui/core';
 
 function App() {
-  // const [favesList, setFavesList] = useState([]);
-
-  // const addToFavesList = (workout) => {
-  //   setFavesList([...favesList, workout]);
-  // };
-
   return (
     <ThemeProvider>
       <div className='App'>
