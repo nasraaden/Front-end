@@ -6,11 +6,14 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import { connect } from 'react-redux';
 
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
 import { getWorkoutById, editWorkout } from '../../actions/workoutActions';
 import SideNav from '../SideNav';
 
-const UpdateWorkout = ({ getWorkoutById, editWorkout, match, history }) => {
+const UpdateWorkout = ({ editWorkout, match, history }) => {
   const useStyles = makeStyles((theme) => ({
+    focused: {},
     outlinedInput: {
       '&$focused $notchedOutline': {
         border: '2px solid #00A35E',
@@ -75,9 +78,13 @@ const UpdateWorkout = ({ getWorkoutById, editWorkout, match, history }) => {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    getWorkoutById(userId, match.params.id);
-  }, [match.params.id]);
-
+    axiosWithAuth()
+      .get(`${userId}/workouts/${match.params.id}`)
+      .then((res) => {
+        setWorkout(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, [userId, match.params.id]);
   const handleChanges = (e) => {
     e.preventDefault();
     setWorkout({
@@ -134,9 +141,12 @@ const UpdateWorkout = ({ getWorkoutById, editWorkout, match, history }) => {
                 className={classes.textField}
                 label='Reps'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
                 margin='normal'
                 variant='outlined'
@@ -152,9 +162,12 @@ const UpdateWorkout = ({ getWorkoutById, editWorkout, match, history }) => {
                 className={classes.textField}
                 label='lbs'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
                 margin='normal'
                 variant='outlined'

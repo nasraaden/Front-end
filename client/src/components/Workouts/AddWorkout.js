@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
@@ -43,7 +43,6 @@ const AddWorkout = ({ postWorkout, history }) => {
       flexDirection: 'column',
       alignItems: 'center',
       marginLeft: '16rem',
-      border: '2px solid red',
       '@media (max-width: 890px)': {
         marginLeft: '12em',
       },
@@ -100,7 +99,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Exercise Name</p>
               <TextField
                 id='name'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='e.g. Bicep Curls'
                 margin='normal'
@@ -121,7 +120,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Exercise Region</p>
               <TextField
                 id='region'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='e.g. Biceps'
                 margin='normal'
@@ -142,7 +141,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Amount of Reps</p>
               <TextField
                 id='reps'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='Reps'
                 margin='normal'
@@ -164,7 +163,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Amount of Sets</p>
               <TextField
                 id='weight'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='Sets'
                 type='number'
@@ -186,7 +185,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Date</p>
               <TextField
                 id='date'
-                required='true'
+                required
                 className={classes.textField}
                 margin='normal'
                 variant='outlined'
@@ -207,7 +206,7 @@ const AddWorkout = ({ postWorkout, history }) => {
               <p className={classes.p}>Description</p>
               <TextareaAutosize
                 id='description'
-                required='true'
+                required
                 className={classes.textArea}
                 placeholder='Add a helpful description to your exercise!'
                 margin='normal'

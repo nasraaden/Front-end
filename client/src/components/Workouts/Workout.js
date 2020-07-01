@@ -48,7 +48,6 @@ const Workout = ({
         })
       );
   };
-
   return (
     <div>
       <div>
