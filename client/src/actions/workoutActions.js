@@ -30,7 +30,7 @@ export const getWorkouts = () => (dispatch) => {
   dispatch({ type: FETCH_WORKOUTS_START });
   const userId = localStorage.getItem('userId');
   return axiosWithAuth()
-    .get(`/${userId}/workouts`)
+    .get(`users/${userId}/workouts`)
     .then((res) => {
       dispatch({ type: FETCH_WORKOUTS_SUCCESS, payload: res.data });
     })
@@ -43,7 +43,7 @@ export const getWorkouts = () => (dispatch) => {
 export const getWorkoutById = (userId, workoutId) => (dispatch) => {
   dispatch({ type: FETCH_WORKOUT_BY_ID_START });
   return axiosWithAuth()
-    .get(`/${userId}/workouts/${workoutId}`)
+    .get(`users/${userId}/workouts/${workoutId}`)
     .then((res) => {
       dispatch({ type: FETCH_WORKOUT_BY_ID_SUCCESS, payload: res.data[0] });
     })
@@ -56,7 +56,7 @@ export const getWorkoutById = (userId, workoutId) => (dispatch) => {
 export const postWorkout = (userId, newWorkout) => (dispatch) => {
   dispatch({ type: POST_WORKOUT_START });
   return axiosWithAuth()
-    .post(`/${userId}/add-workout`, newWorkout)
+    .post(`users/${userId}/add-workout`, newWorkout)
     .then((res) => {
       dispatch({ type: POST_WORKOUT_SUCCESS, payload: res.data });
     })
@@ -69,7 +69,7 @@ export const postWorkout = (userId, newWorkout) => (dispatch) => {
 export const editWorkout = (userId, workoutId, changes) => (dispatch) => {
   dispatch({ type: EDIT_WORKOUT_START });
   return axiosWithAuth()
-    .put(`/${userId}/workouts/${workoutId}`, changes)
+    .put(`users/${userId}/workouts/${workoutId}`, changes)
     .then((res) => {
       dispatch({ type: EDIT_WORKOUT_SUCCESS, payload: res.data });
     })
@@ -82,7 +82,7 @@ export const editWorkout = (userId, workoutId, changes) => (dispatch) => {
 export const deleteWorkout = (userId, workoutId) => (dispatch) => {
   dispatch({ type: DELETE_WORKOUT_START });
   return axiosWithAuth()
-    .delete(`/${userId}/workouts/${workoutId}`)
+    .delete(`users/${userId}/workouts/${workoutId}`)
     .then((res) => {
       dispatch({ type: DELETE_WORKOUT_SUCCESS, payload: res.data });
     })

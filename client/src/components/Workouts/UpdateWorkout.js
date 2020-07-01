@@ -79,7 +79,7 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`${userId}/workouts/${match.params.id}`)
+      .get(`users/${userId}/workouts/${match.params.id}`)
       .then((res) => {
         setWorkout(res.data[0]);
       })
