@@ -1,6 +1,5 @@
 .form-container {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -13,7 +12,6 @@
 .left .left-text {
   color: white;
   text-align: center;
-  /* margin-top: 40%; */
   padding: 17rem 0;
 }
 
@@ -30,7 +28,6 @@
 .form-container .form {
   text-align: center;
   margin: 0 auto;
-  /* border: 2px solid red; */
 }
 
 .form h2 {
@@ -57,5 +54,4 @@
 
 .form .redirect {
   color: black;
-  /* text-decoration: none; */
 }

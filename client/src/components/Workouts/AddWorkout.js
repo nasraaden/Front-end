@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
-// import jwt from 'jsonwebtoken';
 
-// import { addWorkout } from "../../actions/workoutActions";
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { postWorkout } from '../../actions/workoutActions';
+
 import SideNav from '../SideNav';
 
-const AddWorkout = (props) => {
+const AddWorkout = ({ postWorkout, history }) => {
   const [newWorkout, setNewWorkout] = useState({
     name: '',
     region: '',
@@ -20,18 +18,7 @@ const AddWorkout = (props) => {
     description: '',
   });
 
-  const [workouts, setWorkouts] = useState([]);
-  useEffect(() => {
-    axiosWithAuth()
-      .get('/workouts')
-      .then((res) => {
-        console.log(res);
-        setWorkouts(res.data);
-      })
-      .catch((err) => {
-        console.log('unable to grab workouts', err);
-      });
-  }, []);
+  const userId = localStorage.getItem('userId');
 
   const handleChanges = (e) => {
     e.preventDefault();
@@ -40,13 +27,7 @@ const AddWorkout = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .post('/workouts', newWorkout)
-      .then((res) => {
-        setWorkouts({ ...workouts, newWorkout });
-      })
-      .catch((err) => console.log(err.response));
-    props.history.push('/workouts');
+    postWorkout(userId, newWorkout).then(() => history.push('/workouts'));
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -62,7 +43,6 @@ const AddWorkout = (props) => {
       flexDirection: 'column',
       alignItems: 'center',
       marginLeft: '16rem',
-      border: '2px solid red',
       '@media (max-width: 890px)': {
         marginLeft: '12em',
       },
@@ -119,7 +99,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Exercise Name</p>
               <TextField
                 id='name'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='e.g. Bicep Curls'
                 margin='normal'
@@ -140,7 +120,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Exercise Region</p>
               <TextField
                 id='region'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='e.g. Biceps'
                 margin='normal'
@@ -161,7 +141,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Amount of Reps</p>
               <TextField
                 id='reps'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='Reps'
                 margin='normal'
@@ -183,7 +163,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Amount of Sets</p>
               <TextField
                 id='weight'
-                required='true'
+                required
                 className={classes.textField}
                 placeholder='Sets'
                 type='number'
@@ -205,7 +185,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Date</p>
               <TextField
                 id='date'
-                required='true'
+                required
                 className={classes.textField}
                 margin='normal'
                 variant='outlined'
@@ -226,7 +206,7 @@ const AddWorkout = (props) => {
               <p className={classes.p}>Description</p>
               <TextareaAutosize
                 id='description'
-                required='true'
+                required
                 className={classes.textArea}
                 placeholder='Add a helpful description to your exercise!'
                 margin='normal'
@@ -253,8 +233,8 @@ const AddWorkout = (props) => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return state;
-// };
+const mapStateToProps = (state) => {
+  return state;
+};
 
-export default AddWorkout;
+export default connect(mapStateToProps, { postWorkout })(AddWorkout);

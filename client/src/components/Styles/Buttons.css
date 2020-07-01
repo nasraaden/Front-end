@@ -5,12 +5,10 @@
   letter-spacing: 0.1rem;
   width: 35rem;
   height: 3rem;
-  /* margin: 1rem; */
   background: #00a35e;
   color: white;
   border-radius: 0.2rem;
   text-transform: uppercase;
-  /* border: 2px solid red; */
 }
 
 .add-save-button:hover {

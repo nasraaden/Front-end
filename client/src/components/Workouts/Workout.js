@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { getWorkoutById, addToFaves } from '../../actions/workoutActions';
+import {
+  getWorkoutById,
+  deleteWorkout,
+  addToFaves,
+} from '../../actions/workoutActions';
 import SideNav from '../SideNav';
 
-import { useToast, Button } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/core';
 
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 
 const Workout = ({
   workout,
   getWorkoutById,
+  deleteWorkout,
   addToFaves,
   match,
   history,
@@ -28,15 +33,22 @@ const Workout = ({
     history.push(`/update-workout/${match.params.id}`);
   };
 
-  const deleteWorkout = (e) => {
+  const removeWorkout = (e) => {
     e.preventDefault();
+    deleteWorkout(userId, workout.id)
+      .then(() => history.push('/workouts'))
+      .then(() =>
+        toast({
+          title: 'Deleted!',
+          description:
+            'This exercise has been deleted from your exercise list.',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+          position: 'top-right',
+        })
+      );
   };
-
-  const fave = () => {};
-
-  console.log('FAVES ADDED', faveAdded);
-  console.log('WORKOUT', workout);
-
   return (
     <div>
       <div>
@@ -59,7 +71,7 @@ const Workout = ({
             <div className='edit-del-fave'>
               <p onClick={editWorkout}>Edit</p>
               <p>|</p>
-              <p onClick={deleteWorkout}>Delete</p>
+              <p onClick={removeWorkout}>Delete</p>
               <p>|</p>
               <p>
                 {faveAdded ? (
@@ -69,9 +81,9 @@ const Workout = ({
                       toast({
                         title: 'Wait a minute!',
                         description:
-                          'This workout is already in your favorites.',
+                          'This exercise is already in your favorites.',
                         status: 'info',
-                        duration: 1500,
+                        duration: 2000,
                         isClosable: true,
                         position: 'top-right',
                       })
@@ -85,9 +97,9 @@ const Workout = ({
                       toast({
                         title: 'Success!',
                         description:
-                          'This workout has been added to your favorites.',
+                          'This exercise has been added to your favorites.',
                         status: 'success',
-                        duration: 1500,
+                        duration: 2000,
                         isClosable: true,
                         position: 'top-right',
                       })
@@ -118,5 +130,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   getWorkoutById,
+  deleteWorkout,
   addToFaves,
 })(Workout);

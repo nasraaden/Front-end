@@ -4,11 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
+import { connect } from 'react-redux';
+
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+import { getWorkoutById, editWorkout } from '../../actions/workoutActions';
 import SideNav from '../SideNav';
 
-const UpdateWorkout = (props) => {
+const UpdateWorkout = ({ editWorkout, match, history }) => {
   const useStyles = makeStyles((theme) => ({
+    focused: {},
     outlinedInput: {
       '&$focused $notchedOutline': {
         border: '2px solid #00A35E',
@@ -74,13 +79,12 @@ const UpdateWorkout = (props) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`${userId}/workouts/${props.match.params.id}`)
+      .get(`${userId}/workouts/${match.params.id}`)
       .then((res) => {
         setWorkout(res.data[0]);
       })
       .catch((err) => console.log(err));
-  }, [props.match.params.id]);
-
+  }, [userId, match.params.id]);
   const handleChanges = (e) => {
     e.preventDefault();
     setWorkout({
@@ -91,12 +95,9 @@ const UpdateWorkout = (props) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .put(`/${userId}/workouts/${props.match.params.id}`, workout)
-      .then((res) => {
-        setWorkout(res.data);
-        props.history.push(`/workouts/${workout.id}`);
-      });
+    editWorkout(userId, workout.id, workout).then((res) => {
+      history.push(`/workouts/${workout.id}`);
+    });
   };
 
   return (
@@ -140,9 +141,12 @@ const UpdateWorkout = (props) => {
                 className={classes.textField}
                 label='Reps'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
                 margin='normal'
                 variant='outlined'
@@ -158,9 +162,12 @@ const UpdateWorkout = (props) => {
                 className={classes.textField}
                 label='lbs'
                 type='number'
-                inputProps={{
-                  min: '0',
-                  step: '1',
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
                 }}
                 margin='normal'
                 variant='outlined'
@@ -213,4 +220,12 @@ const UpdateWorkout = (props) => {
   );
 };
 
-export default UpdateWorkout;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+
+export default connect(mapStateToProps, { getWorkoutById, editWorkout })(
+  UpdateWorkout
+);

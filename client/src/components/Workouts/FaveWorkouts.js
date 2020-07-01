@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import WorkoutCard from './WorkoutCard';
 import { connect } from 'react-redux';
 
 const FaveWorkouts = ({ faveWorkouts }) => {
-  console.log('whole thing', faveWorkouts);
   return (
     <div>
       <div>
@@ -18,7 +17,7 @@ const FaveWorkouts = ({ faveWorkouts }) => {
       <div className='dashboard'>
         <div className='workout-list'>
           {faveWorkouts.length === 0 ? (
-            <h1 style={{ fontSize: '1.5rem' }}>
+            <h1 style={{ fontSize: '1.2rem' }}>
               You don't have any exercises in your favorites. Go to{' '}
               <Link to='/workouts' style={{ color: 'black' }}>
                 My Exercises
