@@ -41,7 +41,7 @@
   width: 25rem;
 }
 
-.form button {
+.form .button {
   font-size: 1rem;
   width: 25rem;
   height: 3rem;
@@ -50,7 +50,7 @@
   color: white;
 }
 
-.form button:hover {
+.form .button:hover {
   background: #00a35e;
   color: white;
 }

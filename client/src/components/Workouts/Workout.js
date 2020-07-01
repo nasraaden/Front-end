@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { getWorkoutById } from '../../actions/workoutActions';
-import { addToFaves } from '../../actions/workoutActions';
+import { getWorkoutById, addToFaves } from '../../actions/workoutActions';
 import SideNav from '../SideNav';
 
 import { useToast, Button } from '@chakra-ui/core';
@@ -12,10 +11,10 @@ import { BsHeart, BsHeartFill } from 'react-icons/bs';
 const Workout = ({
   workout,
   getWorkoutById,
-  faveWorkouts,
   addToFaves,
   match,
   history,
+  faveAdded,
 }) => {
   const userId = localStorage.getItem('userId');
   const toast = useToast();
@@ -35,59 +34,72 @@ const Workout = ({
 
   const fave = () => {};
 
-  console.log(faveWorkouts);
+  console.log('FAVES ADDED', faveAdded);
+  console.log('WORKOUT', workout);
 
   return (
     <div>
-      <div className='top' />
-      <div className='side-nav'>
+      <div>
         <SideNav />
       </div>
+      <div className='top' />
       <div className='single-workout-container'>
         <div className='single-workout'>
-          <h3>{workout.name}</h3>
-          <p>Region: {workout.region}</p>
-          <p>Reps Completed: {workout.reps}</p>
-          <p>Weight: {workout.weight}</p>
-          <p>Date: {workout.date}</p>
-          <button className='submit-button' onClick={editWorkout}>
-            Edit
-          </button>
-          <button className='delete-button' onClick={deleteWorkout}>
-            Delete
-          </button>
-          <div>
-            {faveWorkouts.includes(workout) ? (
-              <BsHeartFill
-                className='heart-icon'
-                onClick={() =>
-                  toast({
-                    title: 'Wait a minute!',
-                    description: 'This workout is already in your favorites.',
-                    status: 'info',
-                    duration: 1500,
-                    isClosable: true,
-                    position: 'top-right',
-                  })
-                }
-              />
-            ) : (
-              <BsHeart
-                className='heart-icon'
-                onClick={() => (
-                  addToFaves(workout),
-                  toast({
-                    title: 'Success!',
-                    description:
-                      'This workout has been added to your favorites.',
-                    status: 'success',
-                    duration: 1500,
-                    isClosable: true,
-                    position: 'top-right',
-                  })
+          <div className='workout-top'>
+            <h3>{workout.name}</h3>
+            <p className='top-p'>Region: {workout.region}</p>
+            <div className='reps-weight'>
+              <p>Reps: {workout.reps}</p>
+              <p>|</p>
+              <p>Sets: {workout.weight}</p>
+            </div>
+          </div>
+          <div className='workout-middle'>
+            <p>Date: {workout.date}</p>
+            <div className='edit-del-fave'>
+              <p onClick={editWorkout}>Edit</p>
+              <p>|</p>
+              <p onClick={deleteWorkout}>Delete</p>
+              <p>|</p>
+              <p>
+                {faveAdded ? (
+                  <BsHeartFill
+                    className='heart-icon'
+                    onClick={() =>
+                      toast({
+                        title: 'Wait a minute!',
+                        description:
+                          'This workout is already in your favorites.',
+                        status: 'info',
+                        duration: 1500,
+                        isClosable: true,
+                        position: 'top-right',
+                      })
+                    }
+                  />
+                ) : (
+                  <BsHeart
+                    className='heart-icon'
+                    onClick={() => (
+                      addToFaves(workout),
+                      toast({
+                        title: 'Success!',
+                        description:
+                          'This workout has been added to your favorites.',
+                        status: 'success',
+                        duration: 1500,
+                        isClosable: true,
+                        position: 'top-right',
+                      })
+                    )}
+                  />
                 )}
-              />
-            )}
+              </p>
+            </div>
+          </div>
+          <div className='workout-bottom'>
+            <p className='desc'>Description</p>
+            <p className='text'>{workout.description}</p>
           </div>
         </div>
       </div>
@@ -100,9 +112,11 @@ const mapStateToProps = (state) => {
     fetchingWorkouts: state.workoutState.fetchingWorkouts,
     workout: state.workoutState.workout,
     faveWorkouts: state.workoutState.faveWorkouts,
+    faveAdded: state.workoutState.faveAdded,
   };
 };
 
-export default connect(mapStateToProps, { getWorkoutById, addToFaves })(
-  Workout
-);
+export default connect(mapStateToProps, {
+  getWorkoutById,
+  addToFaves,
+})(Workout);

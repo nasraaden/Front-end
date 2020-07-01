@@ -24,15 +24,12 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
     getWorkouts();
   }, [getWorkouts]);
 
-  if (workouts === []) {
-    return <h1>Add a workout to see your dashboard!</h1>;
-  }
   return (
     <div>
-      <div className='top' />
-      <div className='side-nav'>
+      <div>
         <SideNav />
       </div>
+      <div className='top' />
       <div className='dashboard'>
         <div className='workout-list'>
           {workouts.length === 0 ? (
