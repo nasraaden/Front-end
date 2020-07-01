@@ -40,9 +40,10 @@ const Workout = ({
       .then(() =>
         toast({
           title: 'Deleted!',
-          description: 'This workout has been deleted from your exercise list.',
+          description:
+            'This exercise has been deleted from your exercise list.',
           status: 'success',
-          duration: 1500,
+          duration: 2000,
           isClosable: true,
           position: 'top-right',
         })
@@ -80,9 +81,9 @@ const Workout = ({
                       toast({
                         title: 'Wait a minute!',
                         description:
-                          'This workout is already in your favorites.',
+                          'This exercise is already in your favorites.',
                         status: 'info',
-                        duration: 1500,
+                        duration: 2000,
                         isClosable: true,
                         position: 'top-right',
                       })
@@ -96,9 +97,9 @@ const Workout = ({
                       toast({
                         title: 'Success!',
                         description:
-                          'This workout has been added to your favorites.',
+                          'This exercise has been added to your favorites.',
                         status: 'success',
-                        duration: 1500,
+                        duration: 2000,
                         isClosable: true,
                         position: 'top-right',
                       })
