@@ -30,7 +30,7 @@ const Login = (props) => {
 
   const login = (e) => {
     e.preventDefault();
-    props.getLoggedIn(credentials).then(() => props.history.push('/workouts'));
+    props.getLoggedIn(credentials).then(() => props.history.push('/exercises'));
   };
 
   return (

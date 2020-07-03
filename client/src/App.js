@@ -27,10 +27,10 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
-          <PrivateRoute exact path='/workouts' component={WorkoutList} />
-          <PrivateRoute path='/workouts/:id' component={Workout} />
-          <PrivateRoute path='/update-workout/:id' component={UpdateWorkout} />
-          <PrivateRoute path='/add-workout' component={AddWorkout} />
+          <PrivateRoute exact path='/exercises' component={WorkoutList} />
+          <PrivateRoute path='/exercises/:id' component={Workout} />
+          <PrivateRoute path='/update-exercise/:id' component={UpdateWorkout} />
+          <PrivateRoute path='/add-exercise' component={AddWorkout} />
           <PrivateRoute path='/favorites' component={FaveWorkouts} />
         </Switch>
       </div>

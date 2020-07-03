@@ -96,7 +96,7 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
   const submitForm = (e) => {
     e.preventDefault();
     editWorkout(userId, workout.id, workout).then((res) => {
-      history.push(`/workouts/${workout.id}`);
+      history.push(`/exercises/${workout.id}`);
     });
   };
 

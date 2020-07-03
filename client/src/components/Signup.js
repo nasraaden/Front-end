@@ -31,7 +31,7 @@ const Signup = (props) => {
     if (user.password === user.checkPassword) {
       props
         .getSignedUp({ username: user.username, password: user.password })
-        .then(() => props.history.push('/workouts'));
+        .then(() => props.history.push('/exercises'));
       setUser({
         ...user,
         username: '',
