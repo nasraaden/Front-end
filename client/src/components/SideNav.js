@@ -28,7 +28,7 @@ const SideNav = () => {
         <NavLink
           className='side-nav-link'
           activeClassName='side-active'
-          to='/workouts'
+          to='/exercises'
         >
           <IoIosFitness className='side-nav-icon' />
           My Exercises
@@ -45,7 +45,7 @@ const SideNav = () => {
         <NavLink
           className='side-nav-link'
           activeClassName='side-active'
-          to='/add-workout'
+          to='/add-exercise'
         >
           <GoPlus className='side-nav-icon' />
           Add Exercise
@@ -58,13 +58,13 @@ const SideNav = () => {
           <DrawerContent>
             <DrawerBody className='drawer-bodys'>
               <IoMdClose className='nav-close' onClick={onClose} />
-              <NavLink className='drawer-link' to='/workouts'>
+              <NavLink className='drawer-link' to='/exercise'>
                 My Exercises
               </NavLink>
               <NavLink className='drawer-link' exact to='/favorites'>
                 My Favorites
               </NavLink>
-              <NavLink className='drawer-link' to='/add-workout'>
+              <NavLink className='drawer-link' to='/add-exercise'>
                 Add Exercise
               </NavLink>
             </DrawerBody>

@@ -79,7 +79,7 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`${userId}/workouts/${match.params.id}`)
+      .get(`users/${userId}/workouts/${match.params.id}`)
       .then((res) => {
         setWorkout(res.data[0]);
       })
@@ -96,7 +96,7 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
   const submitForm = (e) => {
     e.preventDefault();
     editWorkout(userId, workout.id, workout).then((res) => {
-      history.push(`/workouts/${workout.id}`);
+      history.push(`/exercises/${workout.id}`);
     });
   };
 

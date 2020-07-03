@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 // state
 import { connect } from 'react-redux';
 import { getWorkouts } from '../../actions/workoutActions';
@@ -25,7 +27,13 @@ const WorkoutList = ({ workouts, getWorkouts }) => {
       <div className='dashboard'>
         <div className='workout-list'>
           {workouts.length === 0 ? (
-            <h1>NOTHING HERE YET</h1>
+            <h1 style={{ fontSize: '1.2rem' }}>
+              You don't have any exercises yet.{' '}
+              <Link to='/add-exercise' style={{ color: 'black' }}>
+                Add
+              </Link>{' '}
+              one to to see it here!{' '}
+            </h1>
           ) : (
             workouts.map((workout) => {
               return (

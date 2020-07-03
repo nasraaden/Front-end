@@ -30,13 +30,13 @@ const Workout = ({
 
   const editWorkout = (e) => {
     e.preventDefault();
-    history.push(`/update-workout/${match.params.id}`);
+    history.push(`/update-exercise/${match.params.id}`);
   };
 
   const removeWorkout = (e) => {
     e.preventDefault();
     deleteWorkout(userId, workout.id)
-      .then(() => history.push('/workouts'))
+      .then(() => history.push('/exercises'))
       .then(() =>
         toast({
           title: 'Deleted!',

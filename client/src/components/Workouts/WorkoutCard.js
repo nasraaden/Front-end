@@ -10,7 +10,7 @@ const WorkoutCard = ({ workout }) => {
         <p className='name'>{workout.name}</p>
         <p className='region'>{workout.region}</p>
       </div>
-      <Link to={`/workouts/${workout.id}`}>
+      <Link to={`/exercises/${workout.id}`}>
         <EditIcon color='disabled' />{' '}
       </Link>
     </div>

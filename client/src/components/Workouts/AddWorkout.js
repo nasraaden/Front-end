@@ -27,7 +27,7 @@ const AddWorkout = ({ postWorkout, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postWorkout(userId, newWorkout).then(() => history.push('/workouts'));
+    postWorkout(userId, newWorkout).then(() => history.push('/exercises'));
   };
 
   const useStyles = makeStyles((theme) => ({
