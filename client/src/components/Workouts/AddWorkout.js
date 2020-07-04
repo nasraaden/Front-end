@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import { connect } from 'react-redux';
 import { postWorkout } from '../../actions/workoutActions';
@@ -204,7 +203,7 @@ const AddWorkout = ({ postWorkout, history }) => {
             </div>
             <div className={classes.div}>
               <p className={classes.p}>Description</p>
-              <TextareaAutosize
+              <textarea
                 id='description'
                 required
                 className={classes.textArea}
@@ -214,13 +213,6 @@ const AddWorkout = ({ postWorkout, history }) => {
                 name='description'
                 onChange={handleChanges}
                 value={newWorkout.description}
-                InputProps={{
-                  classes: {
-                    root: classes.outlinedInput,
-                    focused: classes.focused,
-                    notchedOutline: classes.notchedOutline,
-                  },
-                }}
               />
             </div>
             <div className={classes.div}>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 import { connect } from 'react-redux';
 
@@ -119,6 +118,13 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                 onChange={handleChanges}
                 name='name'
                 value={workout.name}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
               />
             </div>
             <div className={classes.div}>
@@ -132,6 +138,13 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                 onChange={handleChanges}
                 name='region'
                 value={workout.region}
+                InputProps={{
+                  classes: {
+                    root: classes.outlinedInput,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
               />
             </div>
             <div className={classes.div}>
@@ -141,6 +154,11 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                 className={classes.textField}
                 label='Reps'
                 type='number'
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='reps'
+                value={workout.reps}
                 InputProps={{
                   classes: {
                     root: classes.outlinedInput,
@@ -148,11 +166,6 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                     notchedOutline: classes.notchedOutline,
                   },
                 }}
-                margin='normal'
-                variant='outlined'
-                onChange={handleChanges}
-                name='reps'
-                value={workout.reps}
               />
             </div>
             <div className={classes.div}>
@@ -162,6 +175,11 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                 className={classes.textField}
                 label='lbs'
                 type='number'
+                margin='normal'
+                variant='outlined'
+                onChange={handleChanges}
+                name='weight'
+                value={workout.weight}
                 InputProps={{
                   classes: {
                     root: classes.outlinedInput,
@@ -169,11 +187,6 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                     notchedOutline: classes.notchedOutline,
                   },
                 }}
-                margin='normal'
-                variant='outlined'
-                onChange={handleChanges}
-                name='weight'
-                value={workout.weight}
               />
             </div>
             <div className={classes.div}>
@@ -187,18 +200,6 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                 onChange={handleChanges}
                 name='date'
                 value={workout.date}
-              />
-            </div>
-            <div className={classes.div}>
-              <p className={classes.p}>Description</p>
-              <TextareaAutosize
-                id='description'
-                className={classes.textArea}
-                margin='normal'
-                variant='outlined'
-                name='description'
-                onChange={handleChanges}
-                value={workout.description}
                 InputProps={{
                   classes: {
                     root: classes.outlinedInput,
@@ -206,6 +207,18 @@ const UpdateWorkout = ({ editWorkout, match, history }) => {
                     notchedOutline: classes.notchedOutline,
                   },
                 }}
+              />
+            </div>
+            <div className={classes.div}>
+              <p className={classes.p}>Description</p>
+              <textarea
+                id='description'
+                className={classes.textArea}
+                margin='normal'
+                variant='outlined'
+                name='description'
+                onChange={handleChanges}
+                value={workout.description}
               />
             </div>
             <div className={classes.div}>

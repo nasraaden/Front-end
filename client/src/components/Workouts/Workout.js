@@ -92,8 +92,8 @@ const Workout = ({
                 ) : (
                   <BsHeart
                     className='heart-icon'
-                    onClick={() => (
-                      addToFaves(workout),
+                    onClick={() => {
+                      addToFaves(workout);
                       toast({
                         title: 'Success!',
                         description:
@@ -102,8 +102,8 @@ const Workout = ({
                         duration: 2000,
                         isClosable: true,
                         position: 'top-right',
-                      })
-                    )}
+                      });
+                    }}
                   />
                 )}
               </p>
