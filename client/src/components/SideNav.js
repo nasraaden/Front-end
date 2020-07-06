@@ -58,7 +58,7 @@ const SideNav = () => {
           <DrawerContent>
             <DrawerBody className='drawer-bodys'>
               <IoMdClose className='nav-close' onClick={onClose} />
-              <NavLink className='drawer-link' to='/exercise'>
+              <NavLink className='drawer-link' to='/exercises'>
                 My Exercises
               </NavLink>
               <NavLink className='drawer-link' exact to='/favorites'>
