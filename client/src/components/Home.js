@@ -8,10 +8,12 @@ import './Styles/Home.css';
 
 // images
 import mockup from '../images/mockup.png';
-import edit from '../images/edit.png';
-import calendar from '../images/calendar.png';
-import graph from '../images/graph.png';
 import floating from '../images/floating.png';
+
+// icons
+import { BsPencilSquare } from 'react-icons/bs';
+import { BsHeart } from 'react-icons/bs';
+import { BsPhone } from 'react-icons/bs';
 
 const Home = () => {
   return (
@@ -20,10 +22,10 @@ const Home = () => {
       <div className='header'>
         <img src={mockup} alt='iphone mockup of this app' />
         <div className='header-right'>
-          <h3>Finally an app that tracks your lifts fast.</h3>
+          <h3>Getting tired of losing your exercise lists?</h3>
           <p>
-            Focus on your workout with with WeightLifting Journal. Surpass your
-            limits with minimal distraction and clutter.
+            Weightlifing Journal is the place to keep track of them! Focus on
+            your workouts with minimal distraction and clutter.
           </p>
           <Link to='/signup'>
             <button>Signup</button>
@@ -32,44 +34,44 @@ const Home = () => {
       </div>
       <div className='middle'>
         <div className='section'>
-          <img src={edit} alt='edit icon' />
+          <BsPencilSquare className='icon' />
           <div className='text'>
             <h4>Create your own exercises</h4>
             <p>
               Weightlifting Journal gives you total control and customization
-              over your routines.
+              over your exercises.
             </p>
           </div>
         </div>
         <div className='section'>
-          <img src={calendar} alt='calendar icon' />
+          <BsHeart className='icon' />
           <div className='text'>
-            <h4>Track your Progress</h4>
+            <h4>Track your favorites</h4>
             <p>
-              We give you the ability to track your exercises, and it's totally
-              up to you. Lift by lift, or set by set.
+              We give you the ability to track your favorite exercises so you
+              can keep coming back to them.
             </p>
           </div>
         </div>
         <div className='section'>
-          <img src={graph} alt='graph icon' />
+          <BsPhone className='icon' />
           <div className='text'>
-            <h4>Analyze your Consistency</h4>
+            <h4>Take it on the go</h4>
             <p>
-              View your workout patterns and analyze how to keep improving your
-              workouts!
+              View your exercises right from your phone or tablet. Take it to
+              the gym or anywhere you want!
             </p>
           </div>
         </div>
       </div>
       <div className='bottom'>
         <div className='bottom-left'>
-          <h2>No distractions. Just focus.</h2>
+          <h2>No distractions and easy to use.</h2>
           <p>
-            Weightlifting Journal offers one of the fastest ways to create, log
-            and track your workouts. Designed from the ground up to be a
-            distraction-free experience, the minimalist interface helps you
-            focus on your workout.
+            Weightlifting Journal offers you the ability to create your
+            exercises and keep them organized in one place. Designed from the
+            ground up to be a distraction-free experience, the minimalist
+            interface helps you focus on your exercises.
           </p>
           <Link to='/signup'>
             <button>Try for Free</button>

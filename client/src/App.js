@@ -1,7 +1,6 @@
 import React from 'react';
 
 import './App.css';
-import './Media.css';
 
 import { Route, Switch } from 'react-router-dom';
 

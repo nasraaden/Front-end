@@ -37,7 +37,7 @@ const Login = (props) => {
     <div className='form-container'>
       <div className='left'>
         <div className='left-text'>
-          <h1>Welcome back!</h1>
+          <h1>Hey again!</h1>
           <p>Keep your Weightlifting Journal up to date!</p>
         </div>
       </div>
