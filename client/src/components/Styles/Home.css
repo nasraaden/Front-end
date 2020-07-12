@@ -31,6 +31,10 @@
 
 .header img {
   /* border: 2px solid skyblue; */
+  width: 35rem;
+  height: 30rem;
+  margin: 2rem;
+  padding: 1rem;
 }
 
 .header-right {
@@ -183,7 +187,7 @@
 @media (max-width: 830px) {
   .header img {
     width: 22em;
-    height: 18.5em;
+    height: 18em;
   }
 
   .header-right h3 {
@@ -217,6 +221,10 @@
 @media (max-width: 645px) {
   .header {
     flex-direction: column-reverse;
+  }
+  .header img {
+    width: 28em;
+    height: 30em;
   }
   .header-right {
     margin: 3em;
